@@ -257,3 +257,4 @@ paket-files/
 
 .DS_Store
 */.DS_Store
+.vscode/
