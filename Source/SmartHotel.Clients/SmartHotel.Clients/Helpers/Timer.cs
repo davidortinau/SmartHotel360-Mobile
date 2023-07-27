@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Helpers
 {
@@ -31,6 +32,7 @@ namespace SmartHotel.Clients.Core.Helpers
 		    }
 
 		    CancellationTokenSource cts = _cancellation; // safe copy
+		    // TODO Xamarin.Forms.Device.StartTimer is no longer supported. Use Microsoft.Maui.Dispatching.DispatcherExtensions.StartTimer instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
 		    Device.StartTimer(_timespan,
 			    () => {
 				    if (cts.IsCancellationRequested) return false;

@@ -1,6 +1,6 @@
-﻿using Xamarin.Essentials;
-using SmartHotel.Clients.Core.Models;
+﻿using SmartHotel.Clients.Core.Models;
 using SmartHotel.Clients.Core.Utils;
+using Microsoft.Maui.Storage;
 
 namespace SmartHotel.Clients.Core
 {

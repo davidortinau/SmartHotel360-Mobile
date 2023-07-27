@@ -1,7 +1,10 @@
 ﻿using SmartHotel.Clients.Core.Models;
 using System.Collections.Generic;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {

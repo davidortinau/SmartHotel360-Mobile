@@ -1,7 +1,8 @@
 ﻿using SmartHotel.Clients.Core.Models;
 using System;
 using System.Globalization;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Converters
 {
@@ -11,6 +12,7 @@ namespace SmartHotel.Clients.Core.Converters
         {
             var menuItemType = (MenuItemType)value;
 
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             var platform = Device.RuntimePlatform == Device.UWP;
 
             switch (menuItemType)

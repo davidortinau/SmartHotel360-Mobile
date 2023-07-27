@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -17,6 +19,7 @@ namespace SmartHotel.Clients.Core.Controls
 
         public Calendar()
         {
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             TitleLeftArrow = new CalendarButton
             {
                 FontAttributes = FontAttributes.None,
@@ -35,13 +38,14 @@ namespace SmartHotel.Clients.Core.Controls
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontAttributes = FontAttributes.None,
-                TextColor = Color.Black,
+                TextColor = Colors.Black,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = string.Empty,
                 LineBreakMode = LineBreakMode.NoWrap
             };
 
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             TitleRightArrow = new CalendarButton
             {
                 FontAttributes = FontAttributes.None,
@@ -164,7 +168,8 @@ namespace SmartHotel.Clients.Core.Controls
         #region BorderWidth
 
         public static readonly BindableProperty BorderWidthProperty =
-            BindableProperty.Create(nameof(BorderWidth), typeof(int), typeof(Calendar), Device.RuntimePlatform == Device.iOS ? 1 : 3,
+            BindableProperty.Create(nameof(BorderWidth), typeof(int), typeof(Calendar), // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
+Device.RuntimePlatform == Device.iOS ? 1 : 3,
                 propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeBorderWidth((int)newValue, (int)oldValue));
 
         protected void ChangeBorderWidth(int newValue, int oldValue)
@@ -188,7 +193,8 @@ namespace SmartHotel.Clients.Core.Controls
         #region OuterBorderWidth
 
         public static readonly BindableProperty OuterBorderWidthProperty =
-            BindableProperty.Create(nameof(OuterBorderWidth), typeof(int), typeof(Calendar), Device.RuntimePlatform == Device.iOS ? 1 : 3,
+            BindableProperty.Create(nameof(OuterBorderWidth), typeof(int), typeof(Calendar), // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
+Device.RuntimePlatform == Device.iOS ? 1 : 3,
                 propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).mainCalendars.ForEach((obj) => obj.Padding = (int)newValue));
 
         /// <summary>
@@ -206,7 +212,7 @@ namespace SmartHotel.Clients.Core.Controls
         #region BorderColor
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(Calendar), Color.FromHex("#dddddd"),
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(Calendar), Color.FromArgb("#dddddd"),
                 propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeBorderColor((Color)newValue, (Color)oldValue));
 
         protected void ChangeBorderColor(Color newValue, Color oldValue)
@@ -231,13 +237,13 @@ namespace SmartHotel.Clients.Core.Controls
         #region DatesBackgroundColor
 
         public static readonly BindableProperty DatesBackgroundColorProperty =
-            BindableProperty.Create(nameof(DatesBackgroundColor), typeof(Color), typeof(Calendar), Color.White,
+            BindableProperty.Create(nameof(DatesBackgroundColor), typeof(Color), typeof(Calendar), Colors.White,
                 propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDatesBackgroundColor((Color)newValue, (Color)oldValue));
 
         protected void ChangeDatesBackgroundColor(Color newValue, Color oldValue)
         {
             if (newValue == oldValue) return;
-            buttons.FindAll(b => b.IsEnabled && (!b.IsSelected || SelectedBackgroundColor != Color.Default)).ForEach(b => b.BackgroundColor = newValue);
+            buttons.FindAll(b => b.IsEnabled && (!b.IsSelected || SelectedBackgroundColor != null)).ForEach(b => b.BackgroundColor = newValue);
         }
 
         /// <summary>
@@ -255,13 +261,13 @@ namespace SmartHotel.Clients.Core.Controls
         #region DatesTextColor
 
         public static readonly BindableProperty DatesTextColorProperty =
-            BindableProperty.Create(nameof(DatesTextColor), typeof(Color), typeof(Calendar), Color.Black,
+            BindableProperty.Create(nameof(DatesTextColor), typeof(Color), typeof(Calendar), Colors.Black,
                 propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDatesTextColor((Color)newValue, (Color)oldValue));
 
         protected void ChangeDatesTextColor(Color newValue, Color oldValue)
         {
             if (newValue == oldValue) return;
-            buttons.FindAll(b => b.IsEnabled && (!b.IsSelected || SelectedTextColor != Color.Default) && !b.IsOutOfMonth).ForEach(b => b.TextColor = newValue);
+            buttons.FindAll(b => b.IsEnabled && (!b.IsSelected || SelectedTextColor != null) && !b.IsOutOfMonth).ForEach(b => b.TextColor = newValue);
         }
 
         /// <summary>
@@ -285,7 +291,7 @@ namespace SmartHotel.Clients.Core.Controls
         protected void ChangeDatesFontAttributes(FontAttributes newValue, FontAttributes oldValue)
         {
             if (newValue == oldValue) return;
-            buttons.FindAll(b => b.IsEnabled && (!b.IsSelected || SelectedTextColor != Color.Default) && !b.IsOutOfMonth).ForEach(b => b.FontAttributes = newValue);
+            buttons.FindAll(b => b.IsEnabled && (!b.IsSelected || SelectedTextColor != null) && !b.IsOutOfMonth).ForEach(b => b.FontAttributes = newValue);
         }
 
         /// <summary>
@@ -446,6 +452,7 @@ namespace SmartHotel.Clients.Core.Controls
                 var weekNumbers = new Grid { VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.Start, RowSpacing = 0, ColumnSpacing = 0, Padding = new Thickness(0, 0, 0, 0) };
                 weekNumbers.ColumnDefinitions = new ColumnDefinitionCollection { columDef };
                 weekNumbers.RowDefinitions = new RowDefinitionCollection { rowDef, rowDef, rowDef, rowDef, rowDef, rowDef };
+                // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
                 weekNumbers.WidthRequest = NumberOfWeekFontSize * (Device.RuntimePlatform == Device.iOS ? 1.5 : 2.5);
 
                 for (var r = 0; r < 6; r++)

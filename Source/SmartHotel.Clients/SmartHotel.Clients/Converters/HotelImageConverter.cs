@@ -1,7 +1,8 @@
 ﻿using SmartHotel.Clients.Core.Extensions;
 using System;
 using System.Globalization;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Converters
 {
@@ -20,6 +21,7 @@ namespace SmartHotel.Clients.Core.Converters
                 else
                 {
                     var index = rnd.Next(1, 9);
+                    // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
                     return Device.RuntimePlatform == Device.UWP ? string.Format("Assets/i_hotel_{0}.jpg", index) : string.Format("i_hotel_{0}", index);
                 }
             }

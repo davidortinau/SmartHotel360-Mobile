@@ -1,6 +1,7 @@
 ﻿using SmartHotel.Clients.Core.Helpers;
 using SmartHotel.Clients.Core.ViewModels.Base;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Views
 {

@@ -6,7 +6,9 @@ using SmartHotel.Clients.Core.Views;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xamarin.Forms;
+using Microsoft.Maui.Devices;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Services.Navigation
 {
@@ -158,7 +160,7 @@ namespace SmartHotel.Clients.Core.Services.Navigation
             mappings.Add(typeof(SettingsViewModel<RemoteSettings>), typeof(SettingsView));
             mappings.Add(typeof(ExtendedSplashViewModel), typeof(ExtendedSplashView));
 
-            if (Device.Idiom == TargetIdiom.Desktop)
+            if (Device.Idiom == DeviceIdiom.Desktop)
             {
                 mappings.Add(typeof(HomeViewModel), typeof(UwpHomeView));
                 mappings.Add(typeof(SuggestionsViewModel), typeof(UwpSuggestionsView));

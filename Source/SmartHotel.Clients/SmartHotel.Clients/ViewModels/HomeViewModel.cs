@@ -15,8 +15,9 @@ using Microcharts;
 using SkiaSharp;
 using SmartHotel.Clients.Core.Controls;
 using SmartHotel.Clients.Core.Services.IoT;
-using Xamarin.Forms;
 using Entry = Microcharts.Entry;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {

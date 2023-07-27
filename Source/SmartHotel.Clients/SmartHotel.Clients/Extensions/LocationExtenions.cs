@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using Xamarin.Essentials;
+using Microsoft.Maui.Devices.Sensors;
 
 namespace SmartHotel.Clients.Core.Extensions
 {

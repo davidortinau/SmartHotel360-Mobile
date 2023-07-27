@@ -1,5 +1,7 @@
 ﻿using SmartHotel.Clients.Core.Utils;
-using Xamarin.Forms;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Views
 {
@@ -18,8 +20,8 @@ namespace SmartHotel.Clients.Core.Views
         internal void ApplyNavigationTextColor(Page targetPage)
         {
             var color = NavigationBarAttachedProperty.GetTextColor(targetPage);
-            BarTextColor = color == Color.Default
-                ? Color.White
+            BarTextColor = color == null
+                ? Colors.White
                 : color;
         }
 

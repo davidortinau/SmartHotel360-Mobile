@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms.Maps;
+﻿using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Controls.Maps;
 
 namespace SmartHotel.Clients.Core.Models
 {
@@ -12,7 +14,7 @@ namespace SmartHotel.Clients.Core.Models
 
         public string Address { get; set; }
 
-        public Position Position { get; set; }
+        public Location Position { get; set; }
 
         public SuggestionType Type { get; set; }
     }

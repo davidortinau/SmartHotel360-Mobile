@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {

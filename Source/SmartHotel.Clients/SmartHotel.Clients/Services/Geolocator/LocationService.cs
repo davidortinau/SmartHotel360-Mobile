@@ -1,8 +1,8 @@
-﻿using Xamarin.Essentials;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using SmartHotel.Clients.Core.Extensions;
+using Microsoft.Maui.Devices.Sensors;
 
 namespace SmartHotel.Clients.Core.Services.Geolocator
 {

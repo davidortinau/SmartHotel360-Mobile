@@ -4,12 +4,13 @@ using SmartHotel.Clients.Core.ViewModels.Base;
 using System.Collections.Generic;
 using System;
 using System.Windows.Input;
-using Xamarin.Forms;
 using System.Net.Http;
 using System.Diagnostics;
 using MvvmHelpers;
 using SmartHotel.Clients.Core.Extensions;
 using SmartHotel.Clients.Core.Exceptions;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {
