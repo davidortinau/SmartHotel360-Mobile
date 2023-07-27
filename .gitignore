@@ -254,3 +254,6 @@ paket-files/
 # Xamarin
 *.orig
 /src/SmartHotel.Clients/SmartHotel.Clients.iOS/Assets.xcassets/AppIcons.appiconset/ic_others.png
+
+.DS_Store
+*/.DS_Store

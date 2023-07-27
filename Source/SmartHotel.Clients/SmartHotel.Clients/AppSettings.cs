@@ -43,7 +43,7 @@ namespace SmartHotel.Clients.Core
 	    const string defaultRoomId = "";
 
         // Fakes
-        const bool defaultUseFakes = false;
+        const bool defaultUseFakes = true;
 
         const string root = "https://backend.smarthotel360.com/";
 
