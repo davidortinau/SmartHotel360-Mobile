@@ -1,7 +1,8 @@
 ﻿using Android.Widget;
 using SmartHotel.Clients.Droid.Effects;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportEffect(typeof(UnderlineTextEffect), "UnderlineTextEffect")]
 namespace SmartHotel.Clients.Droid.Effects

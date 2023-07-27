@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SmartHotel.Clients.UWP (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SmartHotel.Clients.UWP (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Windows.UI.Xaml.Media;
 
 namespace SmartHotel.Clients.UWP.Extensions

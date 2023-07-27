@@ -4,8 +4,9 @@ using System.Text;
 using Android.OS;
 using Android.Nfc.CardEmulators;
 using SmartHotel.Clients.Core;
-using Xamarin.Forms;
 using Android.App;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Droid.Services.CardEmulation
 {

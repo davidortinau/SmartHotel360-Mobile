@@ -2,7 +2,7 @@
 using SmartHotel.Clients.UWP.Renderers;
 using System;
 using System.Threading.Tasks;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Xamarin.Forms.Platform.UWP;

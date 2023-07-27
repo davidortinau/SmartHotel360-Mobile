@@ -1,8 +1,9 @@
 ﻿using SmartHotel.Clients.iOS.Renderers;
 using System.ComponentModel;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(NavigationPage), typeof(CustomNavigationRenderer))]
 namespace SmartHotel.Clients.iOS.Renderers
@@ -29,7 +30,7 @@ namespace SmartHotel.Clients.iOS.Renderers
 
         void HandlePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == NavigationPage.BarTextColorProperty.PropertyName || e.PropertyName == Xamarin.Forms.PlatformConfiguration.iOSSpecific.NavigationPage.StatusBarTextColorModeProperty.PropertyName)
+            if (e.PropertyName == NavigationPage.BarTextColorProperty.PropertyName || e.PropertyName == Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.NavigationPage.StatusBarTextColorModeProperty.PropertyName)
                 UpdateStatusBarStyle();
         }
 

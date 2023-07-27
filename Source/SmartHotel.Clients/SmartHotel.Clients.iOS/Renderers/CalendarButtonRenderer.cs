@@ -3,11 +3,12 @@ using UIKit;
 using CoreGraphics;
 using System;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using SmartHotel.Clients.Core.Controls;
 using SmartHotel.Clients.iOS.Renderers;
 #if __UNIFIED__
 using Foundation;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 #else
 using MonoTouch.Foundation;
 #endif

@@ -9,9 +9,11 @@ using System.Linq;
 using Windows.Devices.Geolocation;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls.Maps;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.UWP;
 using Xamarin.Forms.Platform.UWP;
+using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Controls.Maps;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace SmartHotel.Clients.UWP.Renderers
@@ -35,6 +37,7 @@ namespace SmartHotel.Clients.UWP.Renderers
         {
             base.OnElementPropertyChanged(sender, e);
 
+            // TODO Microsoft.UI.Xaml.Controls.Maps.MapControl is not yet supported in WindowsAppSDK. For more details see https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported
             var windowsMapView = (MapControl)Control;
             customMap = (CustomMap)sender;
 
@@ -48,9 +51,11 @@ namespace SmartHotel.Clients.UWP.Renderers
             }
         }
 
-        void ClearPushPins(MapControl mapControl) => mapControl.MapElements.Clear();
+        void ClearPushPins(// TODO Microsoft.UI.Xaml.Controls.Maps.MapControl is not yet supported in WindowsAppSDK. For more details see https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported
+MapControl mapControl) => mapControl.MapElements.Clear();
 
-        void AddPushPins(MapControl mapControl, IEnumerable<CustomPin> pins)
+        void AddPushPins(// TODO Microsoft.UI.Xaml.Controls.Maps.MapControl is not yet supported in WindowsAppSDK. For more details see https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported
+MapControl mapControl, IEnumerable<CustomPin> pins)
         {
             if (tempMapIcons != null)
             {
@@ -103,7 +108,7 @@ namespace SmartHotel.Clients.UWP.Renderers
                 return;
             }
 
-            var centerPosition = new Position(formsPins.Average(x => x.Position.Latitude), formsPins.Average(x => x.Position.Longitude));
+            var centerPosition = new Location(formsPins.Average(x => x.Position.Latitude), formsPins.Average(x => x.Position.Longitude));
 
             var minLongitude = formsPins.Min(x => x.Position.Longitude);
             var minLatitude = formsPins.Min(x => x.Position.Latitude);

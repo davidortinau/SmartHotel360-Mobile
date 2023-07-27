@@ -10,9 +10,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.iOS;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace SmartHotel.Clients.iOS.Renderers

@@ -7,7 +7,8 @@ using SmartHotel.Clients.Core.Services.Authentication;
 using SmartHotel.Clients.Core.ViewModels.Base;
 using SmartHotel.Clients.iOS.Services;
 using UIKit;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.iOS
 {

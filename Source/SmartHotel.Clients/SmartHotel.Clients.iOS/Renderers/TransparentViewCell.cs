@@ -1,7 +1,8 @@
 ﻿using SmartHotel.Clients.iOS.Renderers;
 using UIKit;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(ViewCell), typeof(TransparentViewCell))]
 namespace SmartHotel.Clients.iOS.Renderers

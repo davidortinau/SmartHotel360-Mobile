@@ -1,7 +1,8 @@
 ﻿using SmartHotel.Clients.Core.Utils;
 using SmartHotel.Clients.iOS.Renderers;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(Page), typeof(CustomPageRenderer))]
 namespace SmartHotel.Clients.iOS.Renderers

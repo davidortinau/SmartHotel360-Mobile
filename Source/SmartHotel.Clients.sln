@@ -1,17 +1,17 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Clients.Android", "SmartHotel.Clients\SmartHotel.Clients.Android\SmartHotel.Clients.Android.csproj", "{7E4A172B-1268-49C2-87BE-E563700BB22C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Clients.Android", "SmartHotel.Clients\SmartHotel.Clients.Android\SmartHotel.Clients.Android.csproj", "{7E4A172B-1268-49C2-87BE-E563700BB22C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Clients", "SmartHotel.Clients\SmartHotel.Clients\SmartHotel.Clients.csproj", "{7ADA23CF-CB3D-4898-822F-915E251ED8F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Clients.UWP", "SmartHotel.Clients\SmartHotel.Clients.UWP\SmartHotel.Clients.UWP.csproj", "{0D0C7A31-009A-4A19-9663-0F99791FAAC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Clients.UWP", "SmartHotel.Clients\SmartHotel.Clients.UWP\SmartHotel.Clients.UWP.csproj", "{0D0C7A31-009A-4A19-9663-0F99791FAAC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Clients.iOS", "SmartHotel.Clients\SmartHotel.Clients.iOS\SmartHotel.Clients.iOS.csproj", "{99CB58D3-40AE-46B4-BE78-83A0FE0B8F52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Clients.iOS", "SmartHotel.Clients\SmartHotel.Clients.iOS\SmartHotel.Clients.iOS.csproj", "{99CB58D3-40AE-46B4-BE78-83A0FE0B8F52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Clients.UITests", "SmartHotel.Clients.UITests\SmartHotel.Clients.UITests.csproj", "{8CBF1E7B-7AB7-42BF-8960-6BBE971F9BC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Clients.UITests", "SmartHotel.Clients.UITests\SmartHotel.Clients.UITests.csproj", "{8CBF1E7B-7AB7-42BF-8960-6BBE971F9BC7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E50FF8A8-AA8D-4648-8E05-6D42CBE01BEA}"
 EndProject

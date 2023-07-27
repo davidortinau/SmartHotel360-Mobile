@@ -4,10 +4,11 @@ using Xamarin.Forms.Platform.Android;
 using SmartHotel.Clients.Core.Controls;
 using Android.Graphics.Drawables;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using SmartHotel.Clients.Droid.Renderers;
 using Android.Graphics;
 using Android.Content;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(CalendarButton), typeof(CalendarButtonRenderer))]
 namespace SmartHotel.Clients.Droid.Renderers

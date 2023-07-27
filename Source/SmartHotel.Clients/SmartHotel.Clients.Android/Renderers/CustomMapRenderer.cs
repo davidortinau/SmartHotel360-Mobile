@@ -8,9 +8,12 @@ using SmartHotel.Clients.Droid.Renderers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
+using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace SmartHotel.Clients.Droid.Renderers
@@ -108,7 +111,7 @@ namespace SmartHotel.Clients.Droid.Renderers
                 return;
             }
 
-            var centerPosition = new Position(formsPins.Average(x => x.Position.Latitude), formsPins.Average(x => x.Position.Longitude));
+            var centerPosition = new Location(formsPins.Average(x => x.Position.Latitude), formsPins.Average(x => x.Position.Longitude));
 
             var minLongitude = formsPins.Min(x => x.Position.Longitude);
             var minLatitude = formsPins.Min(x => x.Position.Latitude);
