@@ -20,8 +20,10 @@ namespace SmartHotel.Clients.Core.Controls
 
         void ContentUpdated()
         {
-            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
-            if (Device.RuntimePlatform != Device.UWP)
+            if (DeviceInfo.Platform != DevicePlatform.WinUI)
+            {
+                return;
+            }
             {
                 BackgroundColor = Content.BackgroundColor;
             }

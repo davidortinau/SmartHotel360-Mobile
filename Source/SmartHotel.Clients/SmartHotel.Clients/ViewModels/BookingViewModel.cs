@@ -34,7 +34,7 @@ namespace SmartHotel.Clients.Core.ViewModels
         {
             this.analyticService = analyticService;
             this.hotelService = hotelService;
-            dismissKeyboardService = DependencyService.Get<IDismissKeyboardService>();
+            dismissKeyboardService = Locator.Instance.Resolve<IDismissKeyboardService>();
 
             cities = new List<Models.City>();
             suggestions = new List<string>();

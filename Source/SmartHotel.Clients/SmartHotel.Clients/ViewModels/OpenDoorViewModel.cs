@@ -22,7 +22,7 @@ namespace SmartHotel.Clients.Core.ViewModels
         {
             this.authenticationService = authenticationService;
             this.analyticService = analyticService;
-            nfcService = DependencyService.Get<INfcService>();
+            this.nfcService = nfcService;
         }
 
         public ICommand ClosePopupCommand => new AsyncCommand(ClosePopupAsync);

@@ -1,4 +1,6 @@
-﻿using UIKit;
+﻿
+using Microsoft.Maui.Controls;
+using UIKit;
 using ViewCellRenderer = Microsoft.Maui.Controls.Handlers.Compatibility.ViewCellRenderer;
 
 namespace SmartHotel.Clients.iOS.Renderers;

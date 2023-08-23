@@ -25,7 +25,7 @@ namespace SmartHotel.Clients.Core.Controls
             // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             if (ParallaxView == null 
                 || Device.RuntimePlatform == "Windows" 
-                || Device.RuntimePlatform == "WinPhone")
+                || Device.RuntimePlatform == "WinUI")
                 return;
 
             if (height <= 0)

@@ -37,7 +37,7 @@
             <OnPlatform x:Key="ChartTextSize"
                         x:TypeArguments="x:Double">
                 <On Platform="iOS,Android" Value="10" />
-                <On Platform="Windows" Value="11" />
+                <On Platform="WinUI" Value="11" />
             </OnPlatform>
                  
             <Style x:Key="ChartTextStyle" 

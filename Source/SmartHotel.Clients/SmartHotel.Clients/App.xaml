@@ -198,7 +198,7 @@
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:Double">
                             <On Platform="Android, iOS" Value="100" />
-                            <On Platform="UWP" Value="300" />
+                            <On Platform="WinUI" Value="300" />
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
