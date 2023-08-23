@@ -1,15 +1,12 @@
-﻿using Rg.Plugins.Popup.Services;
-using SmartHotel.Clients.Core.Services.NFC;
+﻿using SmartHotel.Clients.Core.Services.NFC;
 using SmartHotel.Clients.Core.ViewModels.Base;
 using System.Windows.Input;
-using System.Threading.Tasks;
 using SmartHotel.Clients.Core.Services.Authentication;
 using SmartHotel.Clients.Core.Services.Analytic;
 using SmartHotel.Clients.Core.Models;
 using Newtonsoft.Json;
-using System.Linq;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
+using Mopups.Services;
+using MvvmHelpers.Commands;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {
@@ -50,16 +47,16 @@ namespace SmartHotel.Clients.Core.ViewModels
 
                 var serializedMessage = JsonConvert.SerializeObject(nfcParameter);
 
-                MessagingCenter.Send(serializedMessage, MessengerKeys.SendNFCToken);
+                CustomMessagingCenter.Send(serializedMessage, MessengerKeys.SendNFCToken);
                 analyticService.TrackEvent("OpenDoor");
             }
         }
 
         Task ClosePopupAsync()
         {
-            if (PopupNavigation.Instance.PopupStack.Any())
+            if (MopupService.Instance.PopupStack.Any())
             {
-                return PopupNavigation.Instance.PopAllAsync(true);
+                return MopupService.Instance.PopAllAsync(true);
             }
             else
             {

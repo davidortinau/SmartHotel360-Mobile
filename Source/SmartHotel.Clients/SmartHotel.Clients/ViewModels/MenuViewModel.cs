@@ -52,8 +52,8 @@ namespace SmartHotel.Clients.Core.ViewModels
 
         public Task OnViewAppearingAsync(VisualElement view)
         {
-            MessagingCenter.Subscribe<Booking>(this, MessengerKeys.BookingRequested, OnBookingRequested);
-            MessagingCenter.Subscribe<CheckoutViewModel>(this, MessengerKeys.CheckoutRequested, OnCheckoutRequested);
+            CustomMessagingCenter.Subscribe<Booking>(this, MessengerKeys.BookingRequested, OnBookingRequested);
+            CustomMessagingCenter.Subscribe<CheckoutViewModel>(this, MessengerKeys.CheckoutRequested, OnCheckoutRequested);
 
             return Task.FromResult(true);
         }
@@ -136,7 +136,7 @@ namespace SmartHotel.Clients.Core.ViewModels
         {
             AppSettings.HasBooking = false;
 
-            MessagingCenter.Send(this, MessengerKeys.CheckoutRequested);
+            CustomMessagingCenter.Send(this, MessengerKeys.CheckoutRequested);
 
             return authenticationService.LogoutAsync();
         }

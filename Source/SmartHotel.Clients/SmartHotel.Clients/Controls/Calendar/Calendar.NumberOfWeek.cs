@@ -214,7 +214,7 @@ namespace SmartHotel.Clients.Core.Controls
 					}
 
                     titleLabels.Add(label);
-                    contentView.Children.Add(label);
+                    contentView.Add(label);
 				}
 
 				if (ShowNumberOfWeek)
@@ -255,7 +255,7 @@ namespace SmartHotel.Clients.Core.Controls
 							FontFamily = WeekdaysFontFamily,
 							FontAttributes = WeekdaysFontAttributes
 						});
-						dl.Children.Add(dayLabels.Last(), c, 0);
+						dl.Add(dayLabels.Last(), c, 0);
 					}
 
 					var stack = new StackLayout
@@ -267,11 +267,11 @@ namespace SmartHotel.Clients.Core.Controls
 						Orientation = StackOrientation.Vertical,
 						Children = { dl, main }
 					};
-					contentView.Children.Add(stack);
+					contentView.Add(stack);
 				}
 				else
 				{
-					contentView.Children.Add(main);
+					contentView.Add(main);
 				}
 			}
 		}

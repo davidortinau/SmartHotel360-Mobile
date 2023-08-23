@@ -25,8 +25,8 @@ namespace SmartHotel.Clients
         }
         public App()
         {
-            AuthenticationClient =
-                new PublicClientApplication($"{AppSettings.B2cAuthority}{AppSettings.B2cTenant}", AppSettings.B2cClientId);
+            // AuthenticationClient =
+            //     new($"{AppSettings.B2cAuthority}{AppSettings.B2cTenant}", AppSettings.B2cClientId);
 
             InitializeComponent();
 

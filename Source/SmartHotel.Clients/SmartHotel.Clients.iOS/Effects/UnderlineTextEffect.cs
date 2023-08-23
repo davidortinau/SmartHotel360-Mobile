@@ -1,11 +1,7 @@
 ﻿using Foundation;
-using SmartHotel.Clients.iOS.Effects;
 using UIKit;
-using Xamarin.Forms.Platform.iOS;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
+using Microsoft.Maui.Controls.Platform;
 
-[assembly: ExportEffect(typeof(UnderlineTextEffect), "UnderlineTextEffect")]
 namespace SmartHotel.Clients.iOS.Effects
 {
     public class UnderlineTextEffect : PlatformEffect

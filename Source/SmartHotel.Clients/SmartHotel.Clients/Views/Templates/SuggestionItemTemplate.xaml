@@ -3,8 +3,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SmartHotel.Clients.Core.Views.Templates.SuggestionItemTemplate"  
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"   
-    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core">
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"   
+    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls">
     <ContentView.Resources>
         <ResourceDictionary>
 

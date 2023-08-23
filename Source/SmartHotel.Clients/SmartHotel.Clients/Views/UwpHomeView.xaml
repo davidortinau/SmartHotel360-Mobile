@@ -4,13 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SmartHotel.Clients.Core.Views.UwpHomeView" 
-    xmlns:ctrls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core"
+    xmlns:ctrls="clr-namespace:SmartHotel.Clients.Core.Controls"
     xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-    xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates;assembly=SmartHotel.Clients.Core"
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core"     
+    xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"
+    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls"     
     xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
-    xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui" 
     BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -118,12 +118,12 @@
         <ToolbarItem  
             Text="{extensions:Translate OpenDoor}"
             Command="{Binding OpenDoorCommand}">
-            <ToolbarItem.Icon>
+            <ToolbarItem.IconImageSource>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android, iOS" Value="ic_card" />
                     <On Platform="UWP" Value="Assets/ic_card.png" />
                 </OnPlatform>
-            </ToolbarItem.Icon>
+            </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -146,7 +146,7 @@
                             </OnPlatform>
                         </Image.Source>
                     </Image>
-                    <carousel:CarouselViewControl 
+                    <!--<carousel:CarouselViewControl 
                         x:Name="Carousel"
                         Orientation="Horizontal" 
                         InterPageSpacing="0" 
@@ -160,7 +160,7 @@
                                     TapCommand="{Binding BindingContext.NotificationsCommand, Source={x:Reference Self}}" />
                             </DataTemplate>
                         </carousel:CarouselViewControl.ItemTemplate>
-                    </carousel:CarouselViewControl>
+                    </carousel:CarouselViewControl>-->
                 </Grid>
                 <Grid
                     BackgroundColor="{StaticResource WhiteColor}"
@@ -195,7 +195,7 @@
                         <Grid
                             Grid.Column="0">
 
-                            <forms:ChartView 
+                            <microcharts:ChartView 
                                 x:Name="chartViewBig"
                                 Chart="{Binding TemperatureChart}"
                                 IsVisible="true"
@@ -227,7 +227,7 @@
                         <Grid
                             Grid.Column="2">
 
-                            <forms:ChartView 
+                            <microcharts:ChartView 
                                 Chart="{Binding LightChart}"
                                 Margin="0, 24, 0, 12"
                             />
@@ -294,7 +294,7 @@
                                 Grid.RowSpan="2"
                                 >
                                 
-                                <forms:ChartView 
+                                <microcharts:ChartView 
                                     x:Name="chartViewSmall"
                                     Chart="{Binding TemperatureChart}"
                                     IsVisible="true"
@@ -323,7 +323,7 @@
                                 Grid.Column="1"
                                 Grid.Row="0">
                               
-                                <forms:ChartView 
+                                <microcharts:ChartView 
                                 Chart="{Binding LightChart}"
                                 Margin="0, 0, 0, 12"
                             />

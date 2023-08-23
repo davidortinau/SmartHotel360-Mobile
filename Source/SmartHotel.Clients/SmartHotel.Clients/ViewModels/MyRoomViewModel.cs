@@ -9,6 +9,9 @@ using SmartHotel.Clients.Core.Helpers;
 using SmartHotel.Clients.Core.Services.IoT;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using MvvmHelpers.Commands;
+using Command = Microsoft.Maui.Controls.Command;
+using Timer = SmartHotel.Clients.Core.Helpers.Timer;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {

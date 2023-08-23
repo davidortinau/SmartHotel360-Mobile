@@ -2,10 +2,10 @@
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ctrls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core"
-    xmlns:effects="clr-namespace:SmartHotel.Clients.Core.Effects;assembly=SmartHotel.Clients.Core"
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"   
-    xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"  
+    xmlns:ctrls="clr-namespace:SmartHotel.Clients.Core.Controls"
+    xmlns:effects="clr-namespace:SmartHotel.Clients.Core.Effects"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"   
+    xmlns:xamanimation="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"  
     xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
     x:Class="SmartHotel.Clients.Core.Views.LoginView">
     <ContentPage.Resources>
@@ -36,9 +36,7 @@
                 <Setter Property="FontSize" 
                         Value="{StaticResource LittleSize}" />
                 <Setter Property="Margin"
-                        Value="{OnPlatform 
-                            Android='5, 0, 0, 0', 
-                            iOS='0, 8, 0, 0'}" />
+                        Value="{OnPlatform Android='5, 0, 0, 0', iOS='0, 8, 0, 0'}" />
             </Style>
 
             <Style x:Key="ForgotPwdLabelStyle"
@@ -47,8 +45,7 @@
                 <Setter Property="FontSize"
                         Value="{StaticResource LittleSize}" />
                 <Setter Property="Margin" 
-                        Value="{OnPlatform 
-                            Android='0, -3, 5, 0'}" />
+                        Value='{OnPlatform 0, Android="0, -3, 5, 0"}' />
             </Style>
 
             <Style x:Key="SignUpTextStyle"

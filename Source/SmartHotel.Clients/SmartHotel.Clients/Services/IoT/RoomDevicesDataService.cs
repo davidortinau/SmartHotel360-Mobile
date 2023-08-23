@@ -9,6 +9,7 @@ using SmartHotel.Clients.Core.Helpers;
 using SmartHotel.Clients.Core.Models;
 using SmartHotel.Clients.Core.Services.Authentication;
 using SmartHotel.Clients.Core.Services.Request;
+using Timer = SmartHotel.Clients.Core.Helpers.Timer;
 
 namespace SmartHotel.Clients.Core.Services.IoT
 {

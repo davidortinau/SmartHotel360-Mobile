@@ -13,7 +13,7 @@ namespace SmartHotel.Clients.Core.Views
 
             InitializeComponent();
 
-            MessagingCenter.Subscribe<LoginViewModel>(this, MessengerKeys.SignInRequested, OnSignInRequested);
+            CustomMessagingCenter.Subscribe<LoginViewModel>(this, MessengerKeys.SignInRequested, OnSignInRequested);
         }
 
         protected override void OnAppearing()

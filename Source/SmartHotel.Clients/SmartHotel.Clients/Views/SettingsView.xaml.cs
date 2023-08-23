@@ -11,7 +11,7 @@ namespace SmartHotel.Clients.Core.Views
 		{
 			InitializeComponent ();
 
-            MessagingCenter.Subscribe<SettingsViewModel<RemoteSettings>>(this, MessengerKeys.LoadSettingsRequested, OnLoadSettingsRequested);
+            CustomMessagingCenter.Subscribe<SettingsViewModel<RemoteSettings>>(this, MessengerKeys.LoadSettingsRequested, OnLoadSettingsRequested);
         }
 
         void OnLoadSettingsRequested(SettingsViewModel<RemoteSettings> settingsViewModel)

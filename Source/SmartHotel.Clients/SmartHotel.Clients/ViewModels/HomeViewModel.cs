@@ -15,9 +15,10 @@ using Microcharts;
 using SkiaSharp;
 using SmartHotel.Clients.Core.Controls;
 using SmartHotel.Clients.Core.Services.IoT;
-using Entry = Microcharts.Entry;
+using Entry = Microcharts.ChartEntry;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using MvvmHelpers.Commands;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {
@@ -157,9 +158,9 @@ namespace SmartHotel.Clients.Core.ViewModels
                 MaxValue = roomTemperature.Maximum.RawValue
             };
 
-            var currentChartValue = new Entry(roomTemperature.Value.RawValue) { Color = SKColor.Parse("#174A51") };
-            var desiredChartValue = new Entry(roomTemperature.Desired.RawValue) { Color = SKColor.Parse("#378D93") };
-            var maxChartValue = new Entry(roomTemperature.Maximum.RawValue) { Color = SKColor.Parse("#D4D4D4") };
+            var currentChartValue = new ChartEntry(roomTemperature.Value.RawValue) { Color = SKColor.Parse("#174A51") };
+            var desiredChartValue = new ChartEntry(roomTemperature.Desired.RawValue) { Color = SKColor.Parse("#378D93") };
+            var maxChartValue = new ChartEntry(roomTemperature.Maximum.RawValue) { Color = SKColor.Parse("#D4D4D4") };
 
 	        chartData.CurrentValueEntry = currentChartValue;
 	        chartData.DesiredValueEntry = desiredChartValue;
@@ -219,8 +220,8 @@ namespace SmartHotel.Clients.Core.ViewModels
 
         public Task OnViewAppearingAsync(VisualElement view)
         {
-            MessagingCenter.Subscribe<Booking>(this, MessengerKeys.BookingRequested, OnBookingRequested);
-            MessagingCenter.Subscribe<CheckoutViewModel>(this, MessengerKeys.CheckoutRequested, OnCheckoutRequested);
+            CustomMessagingCenter.Subscribe<Booking>(this, MessengerKeys.BookingRequested, OnBookingRequested);
+            CustomMessagingCenter.Subscribe<CheckoutViewModel>(this, MessengerKeys.CheckoutRequested, OnCheckoutRequested);
 			
             if ( HasBooking )
             {

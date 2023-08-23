@@ -1,14 +1,10 @@
-﻿using CarouselView.FormsPlugin.iOS;
-using FFImageLoading.Forms.Touch;
-using Foundation;
-using Microcharts.Forms;
-using Microsoft.Identity.Client;
+﻿using Foundation;
 using SmartHotel.Clients.Core.Services.Authentication;
 using SmartHotel.Clients.Core.ViewModels.Base;
 using SmartHotel.Clients.iOS.Services;
 using UIKit;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
 
 namespace SmartHotel.Clients.iOS
 {
@@ -16,8 +12,9 @@ namespace SmartHotel.Clients.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : MauiUIApplicationDelegate
     {
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -31,30 +28,21 @@ namespace SmartHotel.Clients.iOS
             // ENABLE_TEST_CLOUD compiler directive in the Debug configuration,
             // but not the Release configuration.
 
-#if ENABLE_TEST_CLOUD
-            Xamarin.Calabash.Start();
+// #if ENABLE_TEST_CLOUD
+//             Xamarin.Calabash.Start();
 
-            // Mapping StyleId to iOS Labels
-            Forms.ViewInitialized += (object sender, ViewInitializedEventArgs e) =>
-            {
-                if (null != e.View.StyleId && null != e.NativeView)
-                {
-                    e.NativeView.AccessibilityIdentifier = e.View.StyleId;
-                }
-            };
-#endif
-            Forms.Init();
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
-            CarouselViewRenderer.Init();
-            Renderers.Calendar.Init();
-            Xamarin.FormsMaps.Init();
-            InitChartView();
-            InitXamanimation();
-            Rg.Plugins.Popup.Popup.Init();
-
+//             // Mapping StyleId to iOS Labels
+//             Forms.ViewInitialized += (object sender, ViewInitializedEventArgs e) =>
+//             {
+//                 if (null != e.View.StyleId && null != e.NativeView)
+//                 {
+//                     e.NativeView.AccessibilityIdentifier = e.View.StyleId;
+//                 }
+//             };
+// #endif
+         
             RegisterPlatformDependencies();
-            LoadApplication(new App());
-
+            
             base.FinishedLaunching(app, options);
 
             UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
@@ -65,21 +53,11 @@ namespace SmartHotel.Clients.iOS
             UINavigationBar.Appearance.Translucent = true;
 
             // Initialize B2C client
-            App.AuthenticationClient.PlatformParameters = new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController);
+            // App.AuthenticationClient.PlatformParameters = new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController);
 
             return true;
         }
 
         void RegisterPlatformDependencies() => Locator.Instance.Register<IBrowserCookiesService, BrowserCookiesService>();
-
-        static void InitChartView()
-        {
-            var t1 = typeof(ChartView);
-        }
-
-        static void InitXamanimation()
-        {
-            var t2 = typeof(Xamanimation.AnimationBase);
-        }
     }
 }

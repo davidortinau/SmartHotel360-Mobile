@@ -92,7 +92,7 @@ namespace SmartHotel.Clients.Core.Controls
                 });
 
                 // Add image
-                grid.Children.Add(StarImages[i], i, 0);
+                grid.Add(StarImages[i], i, 0);
             }
 
             Content = grid;

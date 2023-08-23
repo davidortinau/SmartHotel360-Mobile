@@ -4,13 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SmartHotel.Clients.Core.Views.HomeView" 
-    xmlns:ctrls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core"
+    xmlns:ctrls="clr-namespace:SmartHotel.Clients.Core.Controls"
     xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-    xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates;assembly=SmartHotel.Clients.Core"
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core"     
+    xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"
+    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls"     
     xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
-    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
+    xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui" 
     BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -35,11 +35,11 @@
             </Style>
 
             <OnPlatform x:Key="ChartTextSize"
-                        x:TypeArguments="x:Double"
-                        iOS="10"
-                        Android="10"
-                        WinPhone="11"/>
-
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android" Value="10" />
+                <On Platform="Windows" Value="11" />
+            </OnPlatform>
+                 
             <Style x:Key="ChartTextStyle" 
                    TargetType="Label"
                    BasedOn="{StaticResource PoppinsSemiBoldLabelStyle}">
@@ -121,12 +121,12 @@
         <ToolbarItem  
             Text="{extensions:Translate OpenDoor}"
             Command="{Binding OpenDoorCommand}">
-            <ToolbarItem.Icon>
+            <ToolbarItem.IconImageSource>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android, iOS" Value="ic_card" />
                     <On Platform="UWP" Value="Assets/ic_card.png" />
                 </OnPlatform>
-            </ToolbarItem.Icon>
+            </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -150,21 +150,17 @@
                             </OnPlatform>
                         </Image.Source>
                     </Image>
-                    <carousel:CarouselViewControl 
+                    <CarouselView
                         x:Name="Carousel"
-                        Orientation="Horizontal" 
-                        InterPageSpacing="0" 
-                        ShowIndicators="True"
-                        ShowArrows="True"
-                        CurrentPageIndicatorTintColor="{StaticResource WhiteColor}"
+                        
                         ItemsSource="{Binding Notifications, Mode=OneWay}">
-                        <carousel:CarouselViewControl.ItemTemplate>
+                        <CarouselView.ItemTemplate>
                             <DataTemplate>
                                 <templates:NotificationItemTemplate 
                                     TapCommand="{Binding BindingContext.NotificationsCommand, Source={x:Reference Self}}" />
                             </DataTemplate>
-                        </carousel:CarouselViewControl.ItemTemplate>
-                    </carousel:CarouselViewControl>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
                     <Image 
                         Margin="0, 30, 0, 12"
                         VerticalOptions="Start"
@@ -327,6 +323,8 @@
                         BackgroundColor="{StaticResource ChartBackgroundColor}">
                         <microcharts:ChartView Chart="{Binding TemperatureChart}"
                                                Margin="12, 24, 12, 12" />
+                                               
+                    
                         <Label  
                             Text="{extensions:Translate RoomTemperature}"
                             Style="{StaticResource ChartTextStyle}"/>

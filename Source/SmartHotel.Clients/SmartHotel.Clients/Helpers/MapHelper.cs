@@ -5,6 +5,7 @@ using Microsoft.Maui.Devices.Sensors;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Maps;
 using Microsoft.Maui.Controls.Maps;
+using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace SmartHotel.Clients.Core.Helpers
 {

@@ -5,6 +5,7 @@ using Microsoft.Maui.Maps;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace SmartHotel.Clients.Core.Controls
 {

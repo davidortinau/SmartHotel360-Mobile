@@ -326,8 +326,8 @@ Device.RuntimePlatform == Device.iOS ? 3 : 5,
             button.FontSize = SelectedFontSize;
             button.BorderWidth = SelectedBorderWidth;
             button.BorderColor = SelectedBorderColor;
-            button.BackgroundColor = SelectedBackgroundColor != null ? SelectedBackgroundColor : (special != null && special.BackgroundColor.HasValue ? special.BackgroundColor.Value : defaultBackgroundColor);
-            button.TextColor = SelectedTextColor != null ? SelectedTextColor : (special != null && special.TextColor.HasValue ? special.TextColor.Value : defaultTextColor);
+            button.BackgroundColor = SelectedBackgroundColor != null ? SelectedBackgroundColor : (special != null && special.BackgroundColor != null ? special.BackgroundColor : defaultBackgroundColor);
+            button.TextColor = SelectedTextColor != null ? SelectedTextColor : (special != null && special.TextColor != null ? special.TextColor : defaultTextColor);
             button.FontAttributes = SelectedFontAttributes != FontAttributes.None ? SelectedFontAttributes : (special != null && special.FontAttributes.HasValue ? special.FontAttributes.Value : defaultFontAttributes);
             button.FontFamily = !string.IsNullOrEmpty(SelectedFontFamily) ? SelectedFontFamily : (special != null && !string.IsNullOrEmpty(special.FontFamily) ? special.FontFamily : defaultFontFamily);
         });

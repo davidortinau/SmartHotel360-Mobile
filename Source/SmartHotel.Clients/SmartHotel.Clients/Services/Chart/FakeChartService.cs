@@ -2,6 +2,7 @@
 using SkiaSharp;
 using SmartHotel.Clients.Core.Controls;
 using System.Threading.Tasks;
+using Entry = Microcharts.ChartEntry;
 
 namespace SmartHotel.Clients.Core.Services.Chart
 {

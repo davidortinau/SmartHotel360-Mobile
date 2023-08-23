@@ -14,6 +14,8 @@ using SmartHotel.Clients.Core.Extensions;
 using SmartHotel.Clients.Core.Exceptions;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using MvvmHelpers.Commands;
+using Command = Microsoft.Maui.Controls.Command;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {
@@ -215,7 +217,7 @@ namespace SmartHotel.Clients.Core.ViewModels
 
                     await NavigationService.NavigateToAsync<MainViewModel>();
 
-                    MessagingCenter.Send(newBooking, MessengerKeys.BookingRequested);
+                    CustomMessagingCenter.Send(newBooking, MessengerKeys.BookingRequested);
                 }
             }
             catch (ConnectivityException cex)

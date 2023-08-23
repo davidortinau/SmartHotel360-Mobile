@@ -14,6 +14,6 @@ namespace SmartHotel.Clients.Core.Helpers
         {
         }
 
-        public void MakeTranslucentStatusBar(bool translucent) => MessagingCenter.Send(this, TranslucentStatusChangeMessage, translucent);
+        public void MakeTranslucentStatusBar(bool translucent) => CustomMessagingCenter.Send(this, TranslucentStatusChangeMessage, translucent);
     }
 }

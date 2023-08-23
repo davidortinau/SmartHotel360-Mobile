@@ -1,58 +1,50 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssetTargetFallback>$(AssetTargetFallback);portable-win+net45+wp8+win81+wpa8;portable-net45+win8</AssetTargetFallback>
-    <AssemblyName>SmartHotel.Clients.Core</AssemblyName>
-    <RootNamespace>SmartHotel.Clients.Core</RootNamespace>
-    <Configurations>UI Test;Debug;Release;UI-Test</Configurations>
-    <BuildWithMSBuildOnMono>true</BuildWithMSBuildOnMono>
     <TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
     <UseMaui>True</UseMaui>
     <OutputType>Library</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
     <SingleProject>true</SingleProject>
+
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UI Test|AnyCPU'">
-    <DefineConstants>TRACE;IS_UI_TEST;</DefineConstants>
-  </PropertyGroup>
+
   <ItemGroup>
-    <None Remove="Resources\GreetingMessage.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\GreetingMessage.txt" />
-  </ItemGroup>
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="8.1.0-alpha-0009" />
     <PackageReference Include="Autofac" Version="4.9.2" />
-    <PackageReference Include="CarouselView.FormsPlugin" Version="6.0.0" />
-    <PackageReference Include="Microcharts" Version="0.7.1" />
-    <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
+    
+    <PackageReference Include="Microcharts.Maui" Version="1.0.0" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.55.0" />
-    <PackageReference Include="Refractored.MvvmHelpers" Version="1.3.0" />
-    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.5.880-pre" />
-    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.5.880-pre" />
-    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
-    <PackageReference Include="Xamanimation" Version="1.2.0" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="FFImageLoadingCompat.Maui" Version="0.1.1" />
+    
+    <PackageReference Include="AlohaKit.Animations" Version="1.0.0" />
+    
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.0-preview.7.8814" />
+    <PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
+
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0-preview.6.23329.7" />
+    
     <PackageReference Include="Microsoft.AppCenter" Version="5.0.2" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.2" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.2" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="5.0.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.0-preview.7.8814" />
+    <PackageReference Include="Mopups" Version="1.1.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Using Include="Microsoft.Maui.Controls.Maps.Map" Alias="Map" />
-  </ItemGroup>
+  
 </Project>

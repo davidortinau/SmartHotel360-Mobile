@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using Microsoft.Maui.Controls.Compatibility;
+using Grid = Microsoft.Maui.Controls.Grid;
+using StackLayout = Microsoft.Maui.Controls.StackLayout;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -75,7 +78,7 @@ namespace SmartHotel.Clients.Core.Controls
 
             scrollView.BackgroundColor = BackgroundColor;
             scrollView.Content = itemsStackLayout;
-            Children.Add(scrollView);
+            Add(scrollView);
         }
 
         protected virtual void SetItems()
@@ -101,7 +104,7 @@ namespace SmartHotel.Clients.Core.Controls
 
             foreach (var item in ItemsSource)
             {
-                itemsStackLayout.Children.Add(GetItemView(item));
+                itemsStackLayout.Add(GetItemView(item));
             }
 
             itemsStackLayout.BackgroundColor = BackgroundColor;

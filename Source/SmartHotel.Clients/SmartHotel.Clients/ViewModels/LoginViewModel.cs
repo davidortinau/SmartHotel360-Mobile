@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using MvvmHelpers.Commands;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {
@@ -72,7 +73,7 @@ namespace SmartHotel.Clients.Core.ViewModels
                 }
             }
 
-            MessagingCenter.Send(this, MessengerKeys.SignInRequested);
+            CustomMessagingCenter.Send(this, MessengerKeys.SignInRequested);
 
             IsBusy = false;
         }
@@ -124,6 +125,6 @@ namespace SmartHotel.Clients.Core.ViewModels
             return isValidUser && isValidPassword;
         }
 
-        Task NavigateToSettingsAsync(object obj) => NavigationService.NavigateToAsync(typeof(SettingsViewModel<RemoteSettings>));
+        Task NavigateToSettingsAsync() => NavigationService.NavigateToAsync(typeof(SettingsViewModel<RemoteSettings>));
     }
 }

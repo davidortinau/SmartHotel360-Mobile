@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using MvvmHelpers.Commands;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {

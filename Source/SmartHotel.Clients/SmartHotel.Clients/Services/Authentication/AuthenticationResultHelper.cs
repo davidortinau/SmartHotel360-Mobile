@@ -1,27 +1,13 @@
-﻿using Microsoft.Identity.Client;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.Text;
 
 namespace SmartHotel.Clients.Core.Services.Authentication
 {
     public static class AuthenticationResultHelper
     {
-        public static Models.User GetUserFromResult(AuthenticationResult ar)
+        public static Models.User GetUserFromResult(object ar)
         {
-            var data = ParseIdToken(ar.IdToken);
-
-            var user = new Models.User
-            {
-                Id = ar.User.UniqueId,
-                Token = ar.Token,
-                Email = GetTokenValue(data, "emails"),
-                Name = GetTokenValue(data, "given_name"),
-                LastName = GetTokenValue(data, "family_name")
-            };
-
-            return user;
+            throw new NotImplementedException();
         }
 
         static JObject ParseIdToken(string idToken)

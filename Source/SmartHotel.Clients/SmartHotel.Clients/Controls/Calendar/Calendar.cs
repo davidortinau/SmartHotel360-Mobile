@@ -23,7 +23,7 @@ namespace SmartHotel.Clients.Core.Controls
             TitleLeftArrow = new CalendarButton
             {
                 FontAttributes = FontAttributes.None,
-                BackgroundColor = Color.Transparent,
+                BackgroundColor = Colors.Transparent,
                 BackgroundImage = FileImageSource.FromFile((Device.RuntimePlatform == Device.UWP) ? "Assets/ic_arrow_left_normal.png" : "ic_arrow_left_normal") as FileImageSource,
                 HeightRequest = 48,
                 WidthRequest = 48,
@@ -49,7 +49,7 @@ namespace SmartHotel.Clients.Core.Controls
             TitleRightArrow = new CalendarButton
             {
                 FontAttributes = FontAttributes.None,
-                BackgroundColor = Color.Transparent,
+                BackgroundColor = Colors.Transparent,
                 HeightRequest = 48,
                 WidthRequest = 48,
                 Margin = new Thickness(0, 0, 24, 0),
@@ -471,7 +471,7 @@ Device.RuntimePlatform == Device.iOS ? 1 : 3,
                         FontFamily = NumberOfWeekFontFamily
                     });
 
-                    weekNumbers.Children.Add(weekNumberLabels.Last(), 0, r);
+                    weekNumbers.Add(weekNumberLabels.Last(), 0, r);
                 }
                 this.weekNumbers.Add(weekNumbers);
             }
@@ -510,7 +510,7 @@ Device.RuntimePlatform == Device.iOS ? 1 : 3,
 
                         var b = buttons.Last();
                         b.Clicked += DateClickedEvent;
-                        mainCalendar.Children.Add(b, c, r);
+                        mainCalendar.Add(b, c, r);
                     }
                 }
                 mainCalendars.Add(mainCalendar);
