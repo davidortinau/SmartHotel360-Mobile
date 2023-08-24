@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using FFImageLoading.Maui;
+using Microcharts.Maui;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using SmartHotel.Clients;
 
@@ -14,6 +15,7 @@ public static class MauiProgramExtensions
 			.UseMauiCompatibility()
 			.UseMauiCommunityToolkit()
 			.UseFFImageLoading()
+			.UseMicrocharts()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("FiraSans_Bold.ttf", "FiraSansBold");

@@ -240,26 +240,33 @@
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand">
                     <Grid>
-                        <ffimageloading:CachedImage 
+                        <Image
                             Source="{Binding Hotel.DefaultPicture, Converter={StaticResource HotelImageConverter}}" 
                             Aspect="AspectFill"
-                            DownsampleToViewSize="true"
                             HeightRequest="420"
-					        HorizontalOptions="FillAndExpand"
-					        VerticalOptions="Start">
-                            <ffimageloading:CachedImage.LoadingPlaceholder>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="placeholder_2" />
-                                    <On Platform="UWP" Value="Assets/placeholder_2.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.LoadingPlaceholder>
-                            <ffimageloading:CachedImage.ErrorPlaceholder>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="placeholder_2" />
-                                    <On Platform="UWP" Value="Assets/placeholder_2.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.ErrorPlaceholder>
-                        </ffimageloading:CachedImage>
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Start"
+                            />
+             <!--            <ffimageloading:CachedImage  -->
+             <!--                Source="{Binding Hotel.DefaultPicture, Converter={StaticResource HotelImageConverter}}"  -->
+             <!--                Aspect="AspectFill" -->
+             <!--                DownsampleToViewSize="true" -->
+             <!--                HeightRequest="420" -->
+					        <!-- HorizontalOptions="FillAndExpand" -->
+					        <!-- VerticalOptions="Start"> -->
+             <!--                <ffimageloading:CachedImage.LoadingPlaceholder> -->
+             <!--                    <OnPlatform x:TypeArguments="ImageSource"> -->
+             <!--                        <On Platform="Android, iOS" Value="placeholder_2" /> -->
+             <!--                        <On Platform="UWP" Value="Assets/placeholder_2.png" /> -->
+             <!--                    </OnPlatform> -->
+             <!--                </ffimageloading:CachedImage.LoadingPlaceholder> -->
+             <!--                <ffimageloading:CachedImage.ErrorPlaceholder> -->
+             <!--                    <OnPlatform x:TypeArguments="ImageSource"> -->
+             <!--                        <On Platform="Android, iOS" Value="placeholder_2" /> -->
+             <!--                        <On Platform="UWP" Value="Assets/placeholder_2.png" /> -->
+             <!--                    </OnPlatform> -->
+             <!--                </ffimageloading:CachedImage.ErrorPlaceholder> -->
+             <!--            </ffimageloading:CachedImage> -->
                         <Grid
                             x:Name="SubHeaderView"
                             BackgroundColor="{StaticResource WhiteColor}"

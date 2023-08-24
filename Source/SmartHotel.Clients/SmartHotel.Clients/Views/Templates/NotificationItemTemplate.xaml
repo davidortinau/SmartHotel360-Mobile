@@ -40,16 +40,19 @@
                 <RowDefinition Height="6*" />
                 <RowDefinition Height="20" />
             </Grid.RowDefinitions>
-            <ffimageloading:CachedImage
-                Grid.RowSpan="3"
-                Aspect="AspectFill">
-                <ffimageloading:CachedImage.Source>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="Android, iOS" Value="hero_image" />
-                        <On Platform="UWP" Value="Assets/hero_image.png" />
-                    </OnPlatform>
-                </ffimageloading:CachedImage.Source>
-            </ffimageloading:CachedImage>
+            <Image Source="hero_image.png"
+                   Grid.RowSpan="3"
+                   Aspect="AspectFill"/>
+            <!-- <ffimageloading:CachedImage -->
+            <!--     Grid.RowSpan="3" -->
+            <!--     Aspect="AspectFill"> -->
+            <!--     <ffimageloading:CachedImage.Source> -->
+            <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+            <!--             <On Platform="Android, iOS" Value="hero_image" /> -->
+            <!--             <On Platform="UWP" Value="Assets/hero_image.png" /> -->
+            <!--         </OnPlatform> -->
+            <!--     </ffimageloading:CachedImage.Source> -->
+            <!-- </ffimageloading:CachedImage> -->
             <Grid 
                 Grid.Row="1"
                 VerticalOptions="Center">
@@ -60,7 +63,7 @@
                 <StackLayout 
                     Orientation="Horizontal"
                     Spacing="0">
-                    <ffimageloading:CachedImage
+                    <Image
                         Source="{Binding Type, Converter={StaticResource NotificationTypeToIconConverter}}"
                         HeightRequest="48"
                         Aspect="AspectFit"

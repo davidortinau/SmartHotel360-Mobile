@@ -63,7 +63,7 @@
                 <Setter Property="TextColor"
                         Value="{StaticResource OrangeColor}" />
                 <Setter Property="FontFamily"
-                        Value="{StaticResource PoppinsBold}" />
+                        Value="PoppinsBold" />
             </Style>
 
         </ResourceDictionary>
@@ -85,7 +85,7 @@
                     <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
                 <!-- Top image -->
-                <ffimageloading:CachedImage 
+                <Image
                     Grid.Row="0"
                     Aspect="AspectFill"
                     Source="{OnPlatform
@@ -285,7 +285,7 @@
                         Text="or"
                         FlexLayout.AlignSelf="Center"
                         TextColor="{StaticResource BlackTextColor}"
-                        FontFamily="{StaticResource PoppinsRegular}"
+                        FontFamily="PoppinsRegular"
                         FontSize="{StaticResource MediumSize}"
                         Margin="{OnPlatform
                             Android='0,1',

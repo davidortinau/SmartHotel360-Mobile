@@ -41,21 +41,21 @@
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                 Value="{StaticResource PoppinsBold}" />
+                 Value="PoppinsBold" />
             </Style>
 
             <Style x:Key="PoppinsRegularLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource PoppinsRegular}" />
+                    Value="PoppinsRegular" />
             </Style>
 
             <Style x:Key="PoppinsSemiBoldLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource PoppinsSemiBold}" />
+                    Value="PoppinsSemiBold" />
             </Style>
 
             <Style x:Key="SettingsTitleStyle" 

@@ -14,6 +14,7 @@ using SmartHotel.Clients.Core.ViewModels.Base;
 using SmartHotel.Clients.iOS.Renderers;
 using SmartHotel.Clients.iOS.Services;
 using SmartHotel.Clients.iOS.Services.DismissKeyboard;
+using UIKit;
 
 namespace SmartHotel.Clients.iOS;
 
@@ -37,10 +38,25 @@ public static class MauiProgram
                 handlers.AddHandler(typeof(CustomMap), typeof(CustomMapHandler));
             });
 
-        // do platform specific stuff here
+        PlatformStyling();
+        
         Locator.Instance.Register<IDismissKeyboardService, DismissKeyboardService>();
         Locator.Instance.Register<IBrowserCookiesService, BrowserCookiesService>();
 
         return builder.Build();
     }
+
+    static void PlatformStyling()
+    {
+        UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+        UINavigationBar.Appearance.ShadowImage = new UIImage();
+        UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
+        UINavigationBar.Appearance.TintColor = UIColor.White;
+        UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
+        UINavigationBar.Appearance.Translucent = true;
+
+        // Initialize B2C client
+        // App.AuthenticationClient.PlatformParameters = new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController);
+    }
+    
 }

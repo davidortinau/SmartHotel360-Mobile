@@ -37,7 +37,7 @@
             <Style x:Key="BaseEntryStyle"
                    TargetType="{x:Type ctrls:ExtendedEntry}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource PoppinsRegular}" />
+                    Value="PoppinsRegular" />
                 <Setter Property="BackgroundColor"
                         Value="Transparent" />
                 <Setter Property="TextColor"
@@ -74,7 +74,7 @@
                 <Setter Property="FontSize"
                         Value="{StaticResource MidMediumSize}" />
                 <Setter Property="FontFamily"
-                        Value="{StaticResource PoppinsSemiBold}" />
+                        Value="PoppinsSemiBold" />
             </Style>
 
             <Style TargetType="{x:Type Button}"
@@ -100,15 +100,17 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <ffimageloading:CachedImage 
-                Aspect="AspectFill">
-                <ffimageloading:CachedImage.Source>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="Android, iOS" Value="img_header_background_1" />
-                        <On Platform="UWP" Value="Assets/img_header_background_1.png" />
-                    </OnPlatform>
-                </ffimageloading:CachedImage.Source>
-            </ffimageloading:CachedImage>
+            <Image Aspect="AspectFill"
+                   Source="img_header_background_1.png"/>
+            <!-- <ffimageloading:CachedImage  -->
+            <!--     Aspect="AspectFill"> -->
+            <!--     <ffimageloading:CachedImage.Source> -->
+            <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+            <!--             <On Platform="Android, iOS" Value="img_header_background_1" /> -->
+            <!--             <On Platform="UWP" Value="Assets/img_header_background_1.png" /> -->
+            <!--         </OnPlatform> -->
+            <!--     </ffimageloading:CachedImage.Source> -->
+            <!-- </ffimageloading:CachedImage> -->
             <ScrollView>
                 <StackLayout
                     Spacing="10">

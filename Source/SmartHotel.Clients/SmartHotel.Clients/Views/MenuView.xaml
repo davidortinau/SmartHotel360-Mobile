@@ -45,18 +45,21 @@
             </Grid.RowDefinitions>
             <Grid 
                 Grid.Row="0">
-                <ffimageloading:CachedImage
+                <Image 
                     Aspect="AspectFill"
-                    Source="{Binding UserAvatar}"
-                    CacheType="Disk"
-                    CacheDuration="30">>
-                    <ffimageloading:CachedImage.LoadingPlaceholder>
-                        <OnPlatform x:TypeArguments="ImageSource">
-                            <On Platform="Android, iOS" Value="avatar" />
-                            <On Platform="UWP" Value="Assets/avatar.png" />
-                        </OnPlatform>
-                    </ffimageloading:CachedImage.LoadingPlaceholder>
-                </ffimageloading:CachedImage>
+                    Source="{Binding UserAvatar}"/>
+                <!-- <ffimageloading:CachedImage -->
+                <!--     Aspect="AspectFill" -->
+                <!--     Source="{Binding UserAvatar}" -->
+                <!--     CacheType="Disk" -->
+                <!--     CacheDuration="30">> -->
+                <!--     <ffimageloading:CachedImage.LoadingPlaceholder> -->
+                <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+                <!--             <On Platform="Android, iOS" Value="avatar" /> -->
+                <!--             <On Platform="UWP" Value="Assets/avatar.png" /> -->
+                <!--         </OnPlatform> -->
+                <!--     </ffimageloading:CachedImage.LoadingPlaceholder> -->
+                <!-- </ffimageloading:CachedImage> -->
                 <Grid 
                     BackgroundColor="#293849"
                     Opacity="0.6"/>

@@ -89,62 +89,62 @@
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                 Value="{StaticResource PoppinsBold}" />
+                 Value="PoppinsBold" />
             </Style>
 
             <Style x:Key="PoppinsLightLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                 Value="{StaticResource PoppinsLight}" />
+                 Value="PoppinsLight" />
             </Style>
 
             <Style x:Key="PoppinsMediumLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                 Value="{StaticResource PoppinsMedium}" />
+                 Value="PoppinsMedium" />
             </Style>
 
             <Style x:Key="PoppinsRegularLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource PoppinsRegular}" />
+                    Value="PoppinsRegular" />
             </Style>
 
             <Style x:Key="PoppinsSemiBoldLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource PoppinsSemiBold}" />
+                    Value="PoppinsSemiBold" />
             </Style>
 
             <Style x:Key="FiraSansBoldLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource FiraSansBold}" />
+                    Value="FiraSansBold" />
             </Style>
 
             <Style x:Key="FiraSansSemiBoldLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource FiraSansSemiBold}" />
+                    Value="FiraSansSemiBold" />
             </Style>
 
             <Style x:Key="FiraSansRegularLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource FiraSansRegular}" />
+                    Value="FiraSansRegular" />
             </Style>
 
             <Style x:Key="BaseEntryStyle"
                    TargetType="{x:Type ctrls:ExtendedEntry}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource PoppinsRegular}" />
+                    Value="PoppinsRegular" />
                 <Setter Property="BackgroundColor"
                         Value="Transparent" />
                 <Setter Property="TextColor"
@@ -181,7 +181,7 @@
                 <Setter Property="FontSize"
                         Value="{StaticResource MidMediumSize}" />
                 <Setter Property="FontFamily"
-                        Value="{StaticResource PoppinsSemiBold}" />
+                        Value="PoppinsSemiBold" />
             </Style>
 
             <Style TargetType="{x:Type Button}"

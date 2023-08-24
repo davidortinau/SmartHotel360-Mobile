@@ -41,25 +41,29 @@
             <Grid 
                 Grid.Row="0"
                 BackgroundColor="{Binding SuggestionType, Converter={StaticResource SuggestionTypeToColorConverter}}"/>
-            <ffimageloading:CachedImage
+            <Image
                 Grid.Row="1"
                 Source="{Binding Picture, Converter={StaticResource HotelImageConverter}}"
-                Aspect="AspectFill"
-                CacheType="Disk"
-                CacheDuration="30">
-                <ffimageloading:CachedImage.LoadingPlaceholder>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="Android, iOS" Value="placeholder_2" />
-                        <On Platform="UWP" Value="Assets/placeholder_2.png" />
-                    </OnPlatform>
-                </ffimageloading:CachedImage.LoadingPlaceholder>
-                <ffimageloading:CachedImage.ErrorPlaceholder>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="Android, iOS" Value="placeholder_2" />
-                        <On Platform="UWP" Value="Assets/placeholder_2.png" />
-                    </OnPlatform>
-                </ffimageloading:CachedImage.ErrorPlaceholder>
-            </ffimageloading:CachedImage>
+                Aspect="AspectFill"/>
+            <!-- <ffimageloading:CachedImage -->
+            <!--     Grid.Row="1" -->
+            <!--     Source="{Binding Picture, Converter={StaticResource HotelImageConverter}}" -->
+            <!--     Aspect="AspectFill" -->
+            <!--     CacheType="Disk" -->
+            <!--     CacheDuration="30"> -->
+            <!--     <ffimageloading:CachedImage.LoadingPlaceholder> -->
+            <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+            <!--             <On Platform="Android, iOS" Value="placeholder_2" /> -->
+            <!--             <On Platform="UWP" Value="Assets/placeholder_2.png" /> -->
+            <!--         </OnPlatform> -->
+            <!--     </ffimageloading:CachedImage.LoadingPlaceholder> -->
+            <!--     <ffimageloading:CachedImage.ErrorPlaceholder> -->
+            <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+            <!--             <On Platform="Android, iOS" Value="placeholder_2" /> -->
+            <!--             <On Platform="UWP" Value="Assets/placeholder_2.png" /> -->
+            <!--         </OnPlatform> -->
+            <!--     </ffimageloading:CachedImage.ErrorPlaceholder> -->
+            <!-- </ffimageloading:CachedImage> -->
             <Label
                 Grid.Row="2"
                 Text="{Binding Name}"

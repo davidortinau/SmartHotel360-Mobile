@@ -77,7 +77,7 @@
                 <Setter Property="FontSize" 
                         Value="{StaticResource LittleSize}" />
                 <Setter Property="FontFamily"
-                    Value="{StaticResource FiraSansRegular}" />
+                    Value="FiraSansRegular" />
             </Style>
 
             <Style x:Key="SeeAllTextStyle" 
@@ -197,17 +197,23 @@
                             <RowDefinition Height="75*" />
                             <RowDefinition Height="25*" />
                         </Grid.RowDefinitions>
-                        <ffimageloading:CachedImage 
+                        <Image 
                             Grid.Row="0"
                             Grid.RowSpan="2"
-                            Aspect="AspectFill">
-                            <ffimageloading:CachedImage.Source>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="img_1" />
-                                    <On Platform="UWP" Value="Assets/img_1.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.Source>
-                        </ffimageloading:CachedImage>
+                            Aspect="AspectFill"
+                            Source="img_1.png"
+                            />
+                        <!-- <ffimageloading:CachedImage  -->
+                        <!--     Grid.Row="0" -->
+                        <!--     Grid.RowSpan="2" -->
+                        <!--     Aspect="AspectFill"> -->
+                        <!--     <ffimageloading:CachedImage.Source> -->
+                        <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+                        <!--             <On Platform="Android, iOS" Value="img_1" /> -->
+                        <!--             <On Platform="UWP" Value="Assets/img_1.png" /> -->
+                        <!--         </OnPlatform> -->
+                        <!--     </ffimageloading:CachedImage.Source> -->
+                        <!-- </ffimageloading:CachedImage> -->
                         <Grid   
                             Grid.Row="1"
                             BackgroundColor="{StaticResource OrangeColor}">
@@ -228,18 +234,23 @@
                             <RowDefinition Height="75*" />
                             <RowDefinition Height="25*" />
                         </Grid.RowDefinitions>
-                        <ffimageloading:CachedImage  
+                        <Image 
                             Grid.Row="0"
                             Grid.RowSpan="2"
                             Source="img_2" 
-                            Aspect="AspectFill">
-                            <ffimageloading:CachedImage.Source>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="img_2" />
-                                    <On Platform="UWP" Value="Assets/img_2.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.Source>
-                        </ffimageloading:CachedImage>
+                            Aspect="AspectFill"/>
+                        <!-- <ffimageloading:CachedImage   -->
+                        <!--     Grid.Row="0" -->
+                        <!--     Grid.RowSpan="2" -->
+                        <!--     Source="img_2"  -->
+                        <!--     Aspect="AspectFill"> -->
+                        <!--     <ffimageloading:CachedImage.Source> -->
+                        <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+                        <!--             <On Platform="Android, iOS" Value="img_2" /> -->
+                        <!--             <On Platform="UWP" Value="Assets/img_2.png" /> -->
+                        <!--         </OnPlatform> -->
+                        <!--     </ffimageloading:CachedImage.Source> -->
+                        <!-- </ffimageloading:CachedImage> -->
                         <Grid   
                             Grid.Row="1"
                             BackgroundColor="{StaticResource WhiteColor}">
@@ -291,15 +302,17 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         RowSpacing="0">
-                        <ffimageloading:CachedImage  
-                            Aspect="AspectFill">
-                            <ffimageloading:CachedImage.Source>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="img_3" />
-                                    <On Platform="UWP" Value="Assets/img_3.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.Source>
-                        </ffimageloading:CachedImage>
+                        <Image Aspect="AspectFill"
+                               Source="img_3.png"/>
+                        <!-- <ffimageloading:CachedImage   -->
+                        <!--     Aspect="AspectFill"> -->
+                        <!--     <ffimageloading:CachedImage.Source> -->
+                        <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+                        <!--             <On Platform="Android, iOS" Value="img_3" /> -->
+                        <!--             <On Platform="UWP" Value="Assets/img_3.png" /> -->
+                        <!--         </OnPlatform> -->
+                        <!--     </ffimageloading:CachedImage.Source> -->
+                        <!-- </ffimageloading:CachedImage> -->
                     </Grid>
                 </Grid>
                 <!-- BOOKING -->
@@ -348,18 +361,23 @@
                             Text="{extensions:Translate AmbientLight}"
                             Style="{StaticResource ChartTextStyle}"/>
                                                
-
-                        <ffimageloading:CachedImage     
+                        <Image 
                             Grid.Row="1"
                             Aspect="AspectFit"
-                            Margin="16, 12, 16, 6">
-                            <ffimageloading:CachedImage.Source>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="be_green" />
-                                    <On Platform="UWP" Value="Assets/be_green.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.Source>
-                        </ffimageloading:CachedImage>
+                            Margin="16, 12, 16, 6"
+                            Source="be_green.png"
+                            />
+                        <!-- <ffimageloading:CachedImage      -->
+                        <!--     Grid.Row="1" -->
+                        <!--     Aspect="AspectFit" -->
+                        <!--     Margin="16, 12, 16, 6"> -->
+                        <!--     <ffimageloading:CachedImage.Source> -->
+                        <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+                        <!--             <On Platform="Android, iOS" Value="be_green" /> -->
+                        <!--             <On Platform="UWP" Value="Assets/be_green.png" /> -->
+                        <!--         </OnPlatform> -->
+                        <!--     </ffimageloading:CachedImage.Source> -->
+                        <!-- </ffimageloading:CachedImage> -->
                         <microcharts:ChartView    
                             Grid.Row="1"
                             Chart="{Binding GreenChart}"
@@ -425,16 +443,20 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <ffimageloading:CachedImage  
+                        <Image 
                             Grid.Row="0"
-                            Aspect="AspectFill">
-                            <ffimageloading:CachedImage.Source>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="img_3" />
-                                    <On Platform="UWP" Value="Assets/img_3.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.Source>
-                        </ffimageloading:CachedImage>
+                            Aspect="AspectFill"
+                            Source="img_3.png"/>
+                        <!-- <ffimageloading:CachedImage   -->
+                        <!--     Grid.Row="0" -->
+                        <!--     Aspect="AspectFill"> -->
+                        <!--     <ffimageloading:CachedImage.Source> -->
+                        <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+                        <!--             <On Platform="Android, iOS" Value="img_3" /> -->
+                        <!--             <On Platform="UWP" Value="Assets/img_3.png" /> -->
+                        <!--         </OnPlatform> -->
+                        <!--     </ffimageloading:CachedImage.Source> -->
+                        <!-- </ffimageloading:CachedImage> -->
                         <Grid   
                             Grid.Row="1"
                             Style="{StaticResource BookConferencePanel2Style}">

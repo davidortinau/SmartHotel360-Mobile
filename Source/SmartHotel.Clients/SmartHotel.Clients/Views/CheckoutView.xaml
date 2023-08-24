@@ -99,13 +99,16 @@
             </Grid>
             <Grid
                 Grid.Row="1">
-                <ffimageloading:CachedImage
+                <Image 
                     Aspect="AspectFill"
-                    Source="{Binding UserAvatar}"
-                    LoadingPlaceholder="avatar.png"
-                    CacheType="Disk"
-                    CacheDuration="30">
-                </ffimageloading:CachedImage>
+                    Source="{Binding UserAvatar}"/>
+                <!-- <ffimageloading:CachedImage -->
+                <!--     Aspect="AspectFill" -->
+                <!--     Source="{Binding UserAvatar}" -->
+                <!--     LoadingPlaceholder="avatar.png" -->
+                <!--     CacheType="Disk" -->
+                <!--     CacheDuration="30"> -->
+                <!-- </ffimageloading:CachedImage> -->
                 <Grid 
                     BackgroundColor="#293849"
                     Opacity="0.75"/>
