@@ -1,8 +1,11 @@
 ﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Core.Platform;
 using FFImageLoading.Maui;
 using Microcharts.Maui;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using SmartHotel.Clients;
+using SmartHotel.Clients.Core.Helpers;
 
 namespace SmartHotel.Clients.Core;
 

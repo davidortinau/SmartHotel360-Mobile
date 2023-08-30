@@ -5,13 +5,16 @@
     xmlns:views="clr-namespace:SmartHotel.Clients.Core.Views"
     x:Class="SmartHotel.Clients.Core.Views.MainView"
     FlyoutLayoutBehavior="Popover"
-    Title="SmartHotel">
+    Title="SmartHotel"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="False">
     <FlyoutPage.Flyout>
         <views:MenuView
             BindingContext="{Binding MenuViewModel}"/>
     </FlyoutPage.Flyout>
     <FlyoutPage.Detail>
         <ContentPage 
+            ios:Page.UseSafeArea="False"
             BackgroundColor="Transparent" />
     </FlyoutPage.Detail>
 </FlyoutPage>

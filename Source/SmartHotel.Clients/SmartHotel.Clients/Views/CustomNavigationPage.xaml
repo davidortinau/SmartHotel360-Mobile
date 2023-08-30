@@ -5,6 +5,7 @@
     x:Class="SmartHotel.Clients.Core.Views.CustomNavigationPage"
     xmlns:iOS="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     iOS:NavigationPage.IsNavigationBarTranslucent="True"
+    iOS:Page.UseSafeArea="False"
     BarTextColor="{StaticResource WhiteColor}">
     <NavigationPage.BarBackgroundColor>
         <OnPlatform x:TypeArguments="Color">

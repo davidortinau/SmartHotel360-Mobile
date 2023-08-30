@@ -3,7 +3,7 @@ using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Views.Templates
 {
-    public partial class MenuItemTemplate : ContentView
+    public partial class MenuItemTemplate
     {
         public MenuItemTemplate()
         {

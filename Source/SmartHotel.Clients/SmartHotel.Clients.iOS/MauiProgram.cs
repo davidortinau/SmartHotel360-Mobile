@@ -1,5 +1,7 @@
 ﻿using System;
 using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Core.Platform;
 using FFImageLoading.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
@@ -8,6 +10,7 @@ using Microsoft.Maui.Hosting;
 using SmartHotel.Clients.Core;
 using SmartHotel.Clients.Core.Controls;
 using SmartHotel.Clients.Core.Effects;
+using SmartHotel.Clients.Core.Helpers;
 using SmartHotel.Clients.Core.Services.Authentication;
 using SmartHotel.Clients.Core.Services.DismissKeyboard;
 using SmartHotel.Clients.Core.ViewModels.Base;
@@ -42,6 +45,9 @@ public static class MauiProgram
         
         Locator.Instance.Register<IDismissKeyboardService, DismissKeyboardService>();
         Locator.Instance.Register<IBrowserCookiesService, BrowserCookiesService>();
+        
+        StatusBar.SetStyle(StatusBarStyle.LightContent);
+        StatusBarHelper.Instance.MakeTranslucentStatusBar(true);
 
         return builder.Build();
     }
@@ -54,6 +60,8 @@ public static class MauiProgram
         UINavigationBar.Appearance.TintColor = UIColor.White;
         UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
         UINavigationBar.Appearance.Translucent = true;
+        
+        
 
         // Initialize B2C client
         // App.AuthenticationClient.PlatformParameters = new PlatformParameters(UIApplication.SharedApplication.KeyWindow.RootViewController);
