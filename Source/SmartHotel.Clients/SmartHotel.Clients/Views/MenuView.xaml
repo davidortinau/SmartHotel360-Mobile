@@ -6,6 +6,8 @@
              xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates"
              xmlns:behaviors="clr-namespace:SmartHotel.Clients.Core.Behaviors" 
              xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
              x:Class="SmartHotel.Clients.Core.Views.MenuView"      
              Title=" ">
     <ContentPage.IconImageSource>
@@ -75,24 +77,24 @@
                         Style="{StaticResource UsernameTextStyle}"/>
                 </StackLayout>
             </Grid>
-            <Grid
-                Grid.Row="1">
-                <ListView 
-                    AutomationId="menu"
-                    ItemsSource="{Binding MenuItems}" 
-                    CachingStrategy="RecycleElement"
-                    SeparatorVisibility="None"
-                    HasUnevenRows="True"
-                    behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding MenuItemSelectedCommand}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <templates:MenuItemTemplate />
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+            
+            <ListView Grid.Row="1"
+                      AutomationId="menu"
+                      ItemsSource="{Binding MenuItems}"
+                      CachingStrategy="RecycleElement"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      RowHeight="88"
+                      behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding MenuItemSelectedCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:MenuItemTemplate />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

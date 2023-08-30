@@ -902,6 +902,9 @@ After:
 <x:String x:Key="PoppinsBold" Value='{OnPlatform iOS="Poppins-Bold", Android="Poppins-Bold.ttf#Poppins", Windows="/Assets/Fonts/Poppins-Bold.ttf#Poppins"}'/>
 ```
 
+if (DeviceInfo.Platform != DevicePlatform.WinUI)
+
+
 Before: 
 
 ```xml
@@ -1077,3 +1080,9 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at SmartHotel.Clients.Core.Views.BookingHotelView.InitializeComponent() in /Users/dmo/work/SmartHotel360-Mobile/Source/SmartHotel.Clients/SmartHotel.Clients/Microsoft.Maui.Controls.SourceGen/Microsoft.Maui.Controls.SourceGen.CodeBehindGenerator/Views_BookingHotelView.xaml.sg.cs:line 34
    at SmartHotel.Clients.Core.Views.BookingHotelView..ctor() in /Users/dmo/work/SmartHotel360-Mobile/Source/SmartHotel.Clients/SmartHotel.Clients/Views/BookingHotelView.xaml.cs:line 23
    ```
+
+
+
+   Menu layout
+
+   the ListView that distributes the menu items is going off the screen. I tried replacing with a VStack and bindable layout, but it's the same problem. The LV at least scrolls. Why are the items so tall?
