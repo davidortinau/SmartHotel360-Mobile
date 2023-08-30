@@ -21,7 +21,7 @@ namespace SmartHotel.Clients.Core.ViewModels.Base
 {
     public class Locator
     {
-        IContainer container;
+        Autofac.IContainer container;
         ContainerBuilder containerBuilder;
 
         public static Locator Instance { get; } = new Locator();

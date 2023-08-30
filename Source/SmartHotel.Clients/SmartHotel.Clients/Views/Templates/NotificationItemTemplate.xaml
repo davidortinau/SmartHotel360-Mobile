@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView 
     x:Name="Self"
-    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SmartHotel.Clients.Core.Views.Templates.NotificationItemTemplate"    
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui">
     <ContentView.Resources>
         <ResourceDictionary>
 
@@ -40,16 +40,19 @@
                 <RowDefinition Height="6*" />
                 <RowDefinition Height="20" />
             </Grid.RowDefinitions>
-            <ffimageloading:CachedImage
-                Grid.RowSpan="3"
-                Aspect="AspectFill">
-                <ffimageloading:CachedImage.Source>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="Android, iOS" Value="hero_image" />
-                        <On Platform="UWP" Value="Assets/hero_image.png" />
-                    </OnPlatform>
-                </ffimageloading:CachedImage.Source>
-            </ffimageloading:CachedImage>
+            <Image Source="hero_image.png"
+                   Grid.RowSpan="3"
+                   Aspect="AspectFill"/>
+            <!-- <ffimageloading:CachedImage -->
+            <!--     Grid.RowSpan="3" -->
+            <!--     Aspect="AspectFill"> -->
+            <!--     <ffimageloading:CachedImage.Source> -->
+            <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+            <!--             <On Platform="Android, iOS" Value="hero_image" /> -->
+            <!--             <On Platform="UWP" Value="Assets/hero_image.png" /> -->
+            <!--         </OnPlatform> -->
+            <!--     </ffimageloading:CachedImage.Source> -->
+            <!-- </ffimageloading:CachedImage> -->
             <Grid 
                 Grid.Row="1"
                 VerticalOptions="Center">
@@ -60,7 +63,7 @@
                 <StackLayout 
                     Orientation="Horizontal"
                     Spacing="0">
-                    <ffimageloading:CachedImage
+                    <Image
                         Source="{Binding Type, Converter={StaticResource NotificationTypeToIconConverter}}"
                         HeightRequest="48"
                         Aspect="AspectFit"

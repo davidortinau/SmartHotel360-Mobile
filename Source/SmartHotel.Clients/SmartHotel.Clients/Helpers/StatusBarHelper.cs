@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Helpers
 {
@@ -13,6 +14,6 @@ namespace SmartHotel.Clients.Core.Helpers
         {
         }
 
-        public void MakeTranslucentStatusBar(bool translucent) => MessagingCenter.Send(this, TranslucentStatusChangeMessage, translucent);
+        public void MakeTranslucentStatusBar(bool translucent) => CustomMessagingCenter.Send(this, TranslucentStatusChangeMessage, translucent);
     }
 }

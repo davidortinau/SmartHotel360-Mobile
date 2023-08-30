@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -92,9 +93,9 @@ namespace SmartHotel.Clients.Core.Controls
                     button.BackgroundImage = special.BackgroundImage;
                     if (special.FontSize.HasValue) button.FontSize = special.FontSize.Value;
                     if (special.BorderWidth.HasValue) button.BorderWidth = special.BorderWidth.Value;
-                    if (special.BorderColor.HasValue) button.BorderColor = special.BorderColor.Value;
-                    if (special.BackgroundColor.HasValue) button.BackgroundColor = special.BackgroundColor.Value;
-                    if (special.TextColor.HasValue) button.TextColor = special.TextColor.Value;
+                    if (special.BorderColor != null) button.BorderColor = special.BorderColor;
+                    if (special.BackgroundColor != null) button.BackgroundColor = special.BackgroundColor;
+                    if (special.TextColor != null) button.TextColor = special.TextColor;
                     if (special.FontAttributes.HasValue) button.FontAttributes = special.FontAttributes.Value;
                     if (!string.IsNullOrEmpty(special.FontFamily)) button.FontFamily = special.FontFamily;
                     button.IsEnabled = special.Selectable;

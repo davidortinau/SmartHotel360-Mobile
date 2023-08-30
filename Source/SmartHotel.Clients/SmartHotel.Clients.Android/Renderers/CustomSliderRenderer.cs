@@ -1,7 +1,8 @@
 ﻿using Android.Content;
 using SmartHotel.Clients.Droid.Renderers;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(Slider), typeof(CustomSliderRenderer))]
 namespace SmartHotel.Clients.Droid.Renderers

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
-using Xamarin.Essentials;
+using Microsoft.Maui.Storage;
 
 namespace SmartHotel.Clients.Core.Utils
 {

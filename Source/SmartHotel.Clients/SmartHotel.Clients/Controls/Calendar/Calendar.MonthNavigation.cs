@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -150,13 +151,13 @@ namespace SmartHotel.Clients.Core.Controls
             set => TitleLeftArrow.BackgroundColor = value;
         }
 
-        public static readonly BindableProperty TitleLeftArrowFontProperty = BindableProperty.Create(nameof(TitleLeftArrowFont), typeof(Font), typeof(Calendar), default(Font),
-            propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.Font = (Font)newValue);
+        public static readonly BindableProperty TitleLeftArrowFontProperty = BindableProperty.Create(nameof(TitleLeftArrowFont), typeof(string), typeof(Calendar), string.Empty,
+            propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.FontFamily = (string)newValue);
 
-		public Font TitleLeftArrowFont
+		public string TitleLeftArrowFont
         {
-            get => TitleLeftArrow.Font;
-            set => TitleLeftArrow.Font = value;
+            get => TitleLeftArrow.FontFamily;
+            set => TitleLeftArrow.FontFamily = value;
         }
 
         public static readonly BindableProperty TitleLeftArrowFontFamilyProperty = BindableProperty.Create(nameof(TitleLeftArrowFontFamily), typeof(String), typeof(Calendar), default(String),
@@ -214,12 +215,12 @@ namespace SmartHotel.Clients.Core.Controls
         }
 
         public static readonly BindableProperty TitleLeftArrowImageProperty = BindableProperty.Create(nameof(TitleLeftArrowImage), typeof(FileImageSource), typeof(Calendar), default(FileImageSource),
-			propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.Image = (FileImageSource)newValue);
+			propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.ImageSource = (FileImageSource)newValue);
 
 		public FileImageSource TitleLeftArrowImage
         {
-            get => TitleLeftArrow.Image;
-            set => TitleLeftArrow.Image = value;
+            get => (FileImageSource)TitleLeftArrow.ImageSource;
+            set => TitleLeftArrow.ImageSource = value;
         }
 
         public static readonly BindableProperty TitleLeftArrowIsEnabledCoreProperty = BindableProperty.Create(nameof(TitleLeftArrowIsEnabled), typeof(Boolean), typeof(Calendar), default(Boolean),
@@ -276,13 +277,13 @@ namespace SmartHotel.Clients.Core.Controls
             set => TitleRightArrow.BackgroundColor = value;
         }
 
-        public static readonly BindableProperty TitleRightArrowFontProperty = BindableProperty.Create(nameof(TitleRightArrowFont), typeof(Font), typeof(Calendar), default(Font),
-			propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.Font = (Font)newValue);
+        public static readonly BindableProperty TitleRightArrowFontProperty = BindableProperty.Create(nameof(TitleRightArrowFont), typeof(string), typeof(Calendar), string.Empty,
+			propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.FontFamily = (string)newValue);
 
-		public Font TitleRightArrowFont
+		public string TitleRightArrowFont
         {
-            get => TitleRightArrow.Font;
-            set => TitleRightArrow.Font = value;
+            get => (string)TitleRightArrow.FontFamily;
+            set => TitleRightArrow.FontFamily = value;
         }
 
         public static readonly BindableProperty TitleRightArrowFontFamilyProperty = BindableProperty.Create(nameof(TitleRightArrowFontFamily), typeof(String), typeof(Calendar), default(String),
@@ -340,12 +341,12 @@ namespace SmartHotel.Clients.Core.Controls
         }
 
         public static readonly BindableProperty TitleRightArrowImageProperty = BindableProperty.Create(nameof(TitleRightArrowImage), typeof(FileImageSource), typeof(Calendar), default(FileImageSource),
-			propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.Image = (FileImageSource)newValue);
+			propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.ImageSource = (FileImageSource)newValue);
 
 		public FileImageSource TitleRightArrowImage
         {
-            get => TitleRightArrow.Image;
-            set => TitleRightArrow.Image = value;
+            get => (FileImageSource)TitleRightArrow.ImageSource;
+            set => TitleRightArrow.ImageSource = value;
         }
 
         public static readonly BindableProperty TitleRightArrowIsEnabledCoreProperty = BindableProperty.Create(nameof(TitleRightArrowIsEnabled), typeof(Boolean), typeof(Calendar), default(Boolean),

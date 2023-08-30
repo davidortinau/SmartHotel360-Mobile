@@ -1,23 +1,21 @@
-﻿using SmartHotel.Clients.iOS.Renderers;
+﻿
+using Microsoft.Maui.Controls;
 using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
+using ViewCellRenderer = Microsoft.Maui.Controls.Handlers.Compatibility.ViewCellRenderer;
 
-[assembly: ExportRenderer(typeof(ViewCell), typeof(TransparentViewCell))]
-namespace SmartHotel.Clients.iOS.Renderers
+namespace SmartHotel.Clients.iOS.Renderers;
+
+public class TransparentViewCell : ViewCellRenderer
 {
-    public class TransparentViewCell : ViewCellRenderer
+    public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
     {
-        public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
+        var cell = base.GetCell(item, reusableCell, tv);
+
+        if (cell != null)
         {
-            var cell = base.GetCell(item, reusableCell, tv);
-
-            if (cell != null)
-            {
-                cell.SelectionStyle = UITableViewCellSelectionStyle.None;
-            }
-
-            return cell;
+            cell.SelectionStyle = UITableViewCellSelectionStyle.None;
         }
+
+        return cell;
     }
 }

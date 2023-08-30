@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Input;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -26,7 +27,7 @@ namespace SmartHotel.Clients.Core.Controls
 				h = contentView.Height / ShowNumOfMonths;
 				foreach (var child in contentView.Children)
 				{
-					normalView.Add(child);
+					normalView.Add(child as View);
 				}
 			}
 			switch (CalendarViewType)
@@ -48,7 +49,7 @@ namespace SmartHotel.Clients.Core.Controls
 				h = contentView.Height / ShowNumOfMonths;
 				foreach (var child in contentView.Children)
 				{
-					normalView.Add(child);
+					normalView.Add(child as View);
 				}
 			}
 			switch (CalendarViewType)
@@ -66,7 +67,7 @@ namespace SmartHotel.Clients.Core.Controls
             contentView.Children.Clear();
             foreach (var child in normalView)
             {
-                contentView.Children.Add(child);
+                contentView.Add(child);
             }
             CalendarViewType = DateTypeEnum.Normal;
             TitleLeftArrow.IsVisible = true;
@@ -114,12 +115,12 @@ namespace SmartHotel.Clients.Core.Controls
                         }
                     };
 
-                    details.Children.Add(b, c, r);
+                    details.Add(b, c, r);
                 }
             }
             details.WidthRequest = w;
             details.HeightRequest = h;
-            contentView.Children.Add(details);
+            contentView.Add(details);
             CalendarViewType = DateTypeEnum.Month;
             TitleLeftArrow.IsVisible = false;
             TitleRightArrow.IsVisible = false;
@@ -167,12 +168,12 @@ namespace SmartHotel.Clients.Core.Controls
                         }
                     };
                     yearButtons.Add(b);
-                    details.Children.Add(b, c, r);
+                    details.Add(b, c, r);
                 }
             }
             details.WidthRequest = w;
             details.HeightRequest = h;
-            contentView.Children.Add(details);
+            contentView.Add(details);
             CalendarViewType = DateTypeEnum.Year;
             TitleLeftArrow.IsVisible = true;
             TitleRightArrow.IsVisible = true;

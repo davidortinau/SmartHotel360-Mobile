@@ -10,6 +10,12 @@ namespace SmartHotel.Clients.Core.Controls
     {
         public GreenChart() => BackgroundColor = SKColor.Parse("#F6F1E9");
 
+        public IEnumerable<ChartEntry> Entries
+        {
+            get { return entries; }
+            set { entries = value; }
+        }
+
         public float GreenChartLabelTextSize { get; set; } = 9;
 
         public float PointSize { get; set; } = 8;
@@ -49,7 +55,7 @@ namespace SmartHotel.Clients.Core.Controls
 
         protected SKSize CalculateItemSize(int width, int height, float footerHeight, float headerHeight)
         {
-            var total = Entries.Count();
+            var total = entries.Count();
             var w = (width - ((total + 1) * Margin)) / total;
             var h = height - Margin - footerHeight - headerHeight;
             return new SKSize(w, h);
@@ -59,13 +65,13 @@ namespace SmartHotel.Clients.Core.Controls
         {
             var result = new List<SKPoint>();
 
-            for (var i = 0; i < Entries.Count(); i++)
+            for (var i = 0; i < entries.Count(); i++)
             {
-                var entry = Entries.ElementAt(i);
+                var entry = entries.ElementAt(i);
 
                 var x = Margin + (itemSize.Width / 2) + (i * (itemSize.Width + Margin));
                 var y = headerHeight + (((MaxValue - entry.Value) / ValueRange) * itemSize.Height);
-                var point = new SKPoint(x, y);
+                var point = new SKPoint(x, y ?? 0);
                 result.Add(point);
             }
 
@@ -76,9 +82,9 @@ namespace SmartHotel.Clients.Core.Controls
 
         protected void DrawLabels(SKCanvas canvas, SKPoint[] points, SKSize itemSize, int height, float footerHeight)
         {
-            for (var i = 0; i < Entries.Count(); i++)
+            for (var i = 0; i < entries.Count(); i++)
             {
-                var entry = Entries.ElementAt(i);
+                var entry = entries.ElementAt(i);
                 var point = points[i];
 
                 if (!string.IsNullOrEmpty(entry.Label))
@@ -106,9 +112,10 @@ namespace SmartHotel.Clients.Core.Controls
             {
                 for (var i = 0; i < points.Length; i++)
                 {
-                    var entry = Entries.ElementAt(i);
+                    var entry = entries.ElementAt(i);
                     var point = points[i];
-                    canvas.DrawPoint(point, entry.Color, PointSize, PointMode);
+
+                    canvas.DrawPoint(point, entry.Color);
                 }
             }
         }
@@ -119,7 +126,7 @@ namespace SmartHotel.Clients.Core.Controls
             {
                 for (var i = 0; i < points.Length; i++)
                 {
-                    var entry = Entries.ElementAt(i);
+                    var entry = entries.ElementAt(i);
                     var point = points[i];
                     var y = Math.Min(origin, point.Y);
 
@@ -140,7 +147,7 @@ namespace SmartHotel.Clients.Core.Controls
         {
             var result = Margin;
 
-            if (Entries.Any(e => !string.IsNullOrEmpty(e.Label)))
+            if (entries.Any(e => !string.IsNullOrEmpty(e.Label)))
             {
                 result += LabelTextSize - Margin;
             }
@@ -152,7 +159,7 @@ namespace SmartHotel.Clients.Core.Controls
         {
             var result = Margin;
 
-            if (Entries.Any())
+            if (entries.Any())
             {
                 var maxValueWidth = valueLabelSizes.Max(x => x.Width);
 
@@ -170,7 +177,7 @@ namespace SmartHotel.Clients.Core.Controls
             using (var paint = new SKPaint())
             {
                 paint.TextSize = LabelTextSize;
-                return Entries.Select(e =>
+                return entries.Select(e =>
                 {
                     if (string.IsNullOrEmpty(e.ValueLabel))
                     {

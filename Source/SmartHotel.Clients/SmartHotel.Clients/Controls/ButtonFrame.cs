@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -19,7 +20,10 @@ namespace SmartHotel.Clients.Core.Controls
 
         void ContentUpdated()
         {
-            if (Device.RuntimePlatform != Device.UWP)
+            if (DeviceInfo.Platform != DevicePlatform.WinUI)
+            {
+                return;
+            }
             {
                 BackgroundColor = Content.BackgroundColor;
             }

@@ -1,49 +1,58 @@
-﻿using CoreGraphics;
+using CoreGraphics;
 using CoreLocation;
 using MapKit;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Maps.Handlers;
+using Microsoft.Maui.Maps.Platform;
+using Microsoft.Maui.Platform;
 using SmartHotel.Clients.Core.Controls;
 using SmartHotel.Clients.Core.Helpers;
 using SmartHotel.Clients.Core.Models;
-using SmartHotel.Clients.iOS.Renderers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-using Xamarin.Forms.Maps.iOS;
 
-[assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
-namespace SmartHotel.Clients.iOS.Renderers
+namespace SmartHotel.Clients.Core.Controls;
+
+public partial class CustomMapHandler : MapHandler
 {
-    public class CustomMapRenderer : MapRenderer
+    static readonly UIImage eventImage = UIImage.FromFile("pushpin_01.png");
+    static readonly UIImage restaurantImage = UIImage.FromFile("pushpin_02.png");
+
+    static List<CustomPin> customPins;
+    static List<MKAnnotationView> tempAnnotations;
+    static UIView customPinView;
+    
+    static bool isDrawnDone;
+
+    static CustomMap customMap;
+    
+    // protected override MauiMKMapView CreatePlatformView() => new MauiMKMapView();
+
+    protected override void ConnectHandler(MauiMKMapView platformView)
     {
-        readonly UIImage eventImage = UIImage.FromFile("pushpin_01.png");
-        readonly UIImage restaurantImage = UIImage.FromFile("pushpin_02.png");
+        base.ConnectHandler(platformView);
+    
+        // Perform any control setup here
+        tempAnnotations = new List<MKAnnotationView>();
+        customPins = new List<CustomPin>();
+    }
+    //
+    // protected override void DisconnectHandler(UIButton platformView)
+    // {
+    //     // Perform any native view cleanup here
+    //     platformView.Dispose();
+    //     base.DisconnectHandler(platformView);
+    // }
+    
+    private static async void MapCustomPins(CustomMapHandler handler, CustomMap view)
+    {
+        var iosMapView = (MKMapView)handler.PlatformView;
+        customMap = view;    
 
-        List<CustomPin> customPins;
-        List<MKAnnotationView> tempAnnotations;
-        UIView customPinView;
-        CustomMap customMap;
-        bool isDrawnDone;
-
-        public CustomMapRenderer()
-        {
-            tempAnnotations = new List<MKAnnotationView>();
-            customPins = new List<CustomPin>();
-        }
-
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            base.OnElementPropertyChanged(sender, e);
-
-            var iosMapView = (MKMapView)Control;
-            customMap = (CustomMap)sender;
-
-            if (e.PropertyName.Equals("CustomPins") && !isDrawnDone)
+            if (!isDrawnDone)
             {
-                customPins = customMap.CustomPins.ToList();
+                customPins = view.CustomPins.ToList();
 
                 ClearPushPins(iosMapView);
 
@@ -52,14 +61,14 @@ namespace SmartHotel.Clients.iOS.Renderers
                 iosMapView.DidSelectAnnotationView += OnDidSelectAnnotationView;
                 iosMapView.DidDeselectAnnotationView += OnDidDeselectAnnotationView;
 
-                AddPushPins(iosMapView, customMap.CustomPins);
-                PositionMap();
+                AddPushPins(iosMapView, view.CustomPins);
+                PositionMap(view);
 
                 isDrawnDone = true;
             }
         }
 
-        MKAnnotationView GetViewForAnnotation(MKMapView mapView, IMKAnnotation annotation)
+    static MKAnnotationView GetViewForAnnotation(MKMapView mapView, IMKAnnotation annotation)
         {
             MKAnnotationView annotationView = null;
 
@@ -101,7 +110,7 @@ namespace SmartHotel.Clients.iOS.Renderers
             return annotationView;
         }
 
-        void OnDidSelectAnnotationView(object sender, MKAnnotationViewEventArgs e)
+    static void OnDidSelectAnnotationView(object sender, MKAnnotationViewEventArgs e)
         {
             var customView = e.View as CustomMKAnnotationView;
             customPinView = new UIView();
@@ -117,7 +126,7 @@ namespace SmartHotel.Clients.iOS.Renderers
             }
         }
 
-        void OnDidDeselectAnnotationView(object sender, MKAnnotationViewEventArgs e)
+    static void OnDidDeselectAnnotationView(object sender, MKAnnotationViewEventArgs e)
         {
             if (!e.View.Selected)
             {
@@ -127,7 +136,7 @@ namespace SmartHotel.Clients.iOS.Renderers
             }
         }
 
-        void AddPushPins(MKMapView mapView, IEnumerable<CustomPin> pins)
+    static void AddPushPins(MKMapView mapView, IEnumerable<CustomPin> pins)
         {
             foreach (var formsPin in pins)
             {
@@ -145,9 +154,9 @@ namespace SmartHotel.Clients.iOS.Renderers
             }
         }
 
-        CustomPin GetCustomPin(MKAnnotation annotation)
+    static CustomPin GetCustomPin(MKAnnotation annotation)
         {
-            var position = new Position(annotation.Coordinate.Latitude, annotation.Coordinate.Longitude);
+            var position = new Location(annotation.Coordinate.Latitude, annotation.Coordinate.Longitude);
 
             foreach (var pin in customPins)
             {
@@ -160,11 +169,11 @@ namespace SmartHotel.Clients.iOS.Renderers
             return null;
         }
 
-        void ClearPushPins(MKMapView mapView) => mapView.RemoveAnnotations(mapView.Annotations);
+    static void ClearPushPins(MKMapView mapView) => mapView.RemoveAnnotations(mapView.Annotations);
 
-        void PositionMap()
+        static void PositionMap(CustomMap map)
         {
-            var myMap = Element as CustomMap;
+            var myMap = map;
             var formsPins = myMap.CustomPins;
 
             if (formsPins == null || formsPins.Count() == 0)
@@ -172,7 +181,7 @@ namespace SmartHotel.Clients.iOS.Renderers
                 return;
             }
 
-            var centerPosition = new Position(formsPins.Average(x => x.Position.Latitude), formsPins.Average(x => x.Position.Longitude));
+            var centerPosition = new Location(formsPins.Average(x => x.Position.Latitude), formsPins.Average(x => x.Position.Longitude));
 
             var minLongitude = formsPins.Min(x => x.Position.Longitude);
             var minLatitude = formsPins.Min(x => x.Position.Latitude);
@@ -182,38 +191,37 @@ namespace SmartHotel.Clients.iOS.Renderers
 
             var distance = MapHelper.CalculateDistance(minLatitude, minLongitude,
                 maxLatitude, maxLongitude, 'M') / 2;
-
+            
             myMap.MoveToRegion(MapSpan.FromCenterAndRadius(centerPosition, Distance.FromMiles(distance)));
         }
-    }
+}
 
-    public class CustomMKAnnotation : MKAnnotation
+public class CustomMKAnnotation : MKAnnotation
+{
+    CLLocationCoordinate2D coord;
+    readonly string title;
+
+    public override CLLocationCoordinate2D Coordinate => coord;
+
+    public override string Title => title;
+
+    public override void SetCoordinate(CLLocationCoordinate2D coord) => this.coord = coord;
+
+    public CustomMKAnnotation(
+        CLLocationCoordinate2D coord,
+        string title)
     {
-        CLLocationCoordinate2D coord;
-        readonly string title;
-
-        public override CLLocationCoordinate2D Coordinate => coord;
-
-        public override string Title => title;
-
-        public override void SetCoordinate(CLLocationCoordinate2D coord) => this.coord = coord;
-
-        public CustomMKAnnotation(
-            CLLocationCoordinate2D coord,
-            string title)
-        {
-            this.coord = coord;
-            this.title = title;
-        }
+        this.coord = coord;
+        this.title = title;
     }
+}
 
-    public class CustomMKAnnotationView : MKAnnotationView
+public class CustomMKAnnotationView : MKAnnotationView
+{
+    public int Id { get; set; }
+
+    public CustomMKAnnotationView(IMKAnnotation annotation, int id)
+        : base(annotation, id.ToString())
     {
-        public int Id { get; set; }
-
-        public CustomMKAnnotationView(IMKAnnotation annotation, int id)
-            : base(annotation, id.ToString())
-        {
-        }
     }
 }

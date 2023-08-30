@@ -1,18 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:core="clr-namespace:SmartHotel.Clients.Core;assembly=SmartHotel.Clients.Core"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"  
-             xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates;assembly=SmartHotel.Clients.Core"
-             xmlns:behaviors="clr-namespace:SmartHotel.Clients.Core.Behaviors;assembly=SmartHotel.Clients.Core" 
+             xmlns:core="clr-namespace:SmartHotel.Clients.Core"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"  
+             xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates"
+             xmlns:behaviors="clr-namespace:SmartHotel.Clients.Core.Behaviors" 
              xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
              x:Class="SmartHotel.Clients.Core.Views.MenuView"      
              Title=" ">
-    <ContentPage.Icon>
+    <ContentPage.IconImageSource>
         <OnPlatform x:TypeArguments="FileImageSource">
             <On Platform="iOS" Value="ic_menu" />
         </OnPlatform>
-    </ContentPage.Icon>
+    </ContentPage.IconImageSource>
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -45,18 +47,21 @@
             </Grid.RowDefinitions>
             <Grid 
                 Grid.Row="0">
-                <ffimageloading:CachedImage
+                <Image 
                     Aspect="AspectFill"
-                    Source="{Binding UserAvatar}"
-                    CacheType="Disk"
-                    CacheDuration="30">>
-                    <ffimageloading:CachedImage.LoadingPlaceholder>
-                        <OnPlatform x:TypeArguments="ImageSource">
-                            <On Platform="Android, iOS" Value="avatar" />
-                            <On Platform="UWP" Value="Assets/avatar.png" />
-                        </OnPlatform>
-                    </ffimageloading:CachedImage.LoadingPlaceholder>
-                </ffimageloading:CachedImage>
+                    Source="{Binding UserAvatar}"/>
+                <!-- <ffimageloading:CachedImage -->
+                <!--     Aspect="AspectFill" -->
+                <!--     Source="{Binding UserAvatar}" -->
+                <!--     CacheType="Disk" -->
+                <!--     CacheDuration="30">> -->
+                <!--     <ffimageloading:CachedImage.LoadingPlaceholder> -->
+                <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+                <!--             <On Platform="Android, iOS" Value="avatar" /> -->
+                <!--             <On Platform="UWP" Value="Assets/avatar.png" /> -->
+                <!--         </OnPlatform> -->
+                <!--     </ffimageloading:CachedImage.LoadingPlaceholder> -->
+                <!-- </ffimageloading:CachedImage> -->
                 <Grid 
                     BackgroundColor="#293849"
                     Opacity="0.6"/>
@@ -72,24 +77,24 @@
                         Style="{StaticResource UsernameTextStyle}"/>
                 </StackLayout>
             </Grid>
-            <Grid
-                Grid.Row="1">
-                <ListView 
-                    AutomationId="menu"
-                    ItemsSource="{Binding MenuItems}" 
-                    CachingStrategy="RecycleElement"
-                    SeparatorVisibility="None"
-                    HasUnevenRows="True"
-                    behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding MenuItemSelectedCommand}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <templates:MenuItemTemplate />
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+            
+            <ListView Grid.Row="1"
+                      AutomationId="menu"
+                      ItemsSource="{Binding MenuItems}"
+                      CachingStrategy="RecycleElement"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      RowHeight="88"
+                      behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding MenuItemSelectedCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:MenuItemTemplate />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

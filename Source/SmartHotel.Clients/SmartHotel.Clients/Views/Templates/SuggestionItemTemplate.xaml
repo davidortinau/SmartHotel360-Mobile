@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView
-    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SmartHotel.Clients.Core.Views.Templates.SuggestionItemTemplate"  
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"   
-    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core">
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"   
+    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls">
     <ContentView.Resources>
         <ResourceDictionary>
 
@@ -41,25 +41,29 @@
             <Grid 
                 Grid.Row="0"
                 BackgroundColor="{Binding SuggestionType, Converter={StaticResource SuggestionTypeToColorConverter}}"/>
-            <ffimageloading:CachedImage
+            <Image
                 Grid.Row="1"
                 Source="{Binding Picture, Converter={StaticResource HotelImageConverter}}"
-                Aspect="AspectFill"
-                CacheType="Disk"
-                CacheDuration="30">
-                <ffimageloading:CachedImage.LoadingPlaceholder>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="Android, iOS" Value="placeholder_2" />
-                        <On Platform="UWP" Value="Assets/placeholder_2.png" />
-                    </OnPlatform>
-                </ffimageloading:CachedImage.LoadingPlaceholder>
-                <ffimageloading:CachedImage.ErrorPlaceholder>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="Android, iOS" Value="placeholder_2" />
-                        <On Platform="UWP" Value="Assets/placeholder_2.png" />
-                    </OnPlatform>
-                </ffimageloading:CachedImage.ErrorPlaceholder>
-            </ffimageloading:CachedImage>
+                Aspect="AspectFill"/>
+            <!-- <ffimageloading:CachedImage -->
+            <!--     Grid.Row="1" -->
+            <!--     Source="{Binding Picture, Converter={StaticResource HotelImageConverter}}" -->
+            <!--     Aspect="AspectFill" -->
+            <!--     CacheType="Disk" -->
+            <!--     CacheDuration="30"> -->
+            <!--     <ffimageloading:CachedImage.LoadingPlaceholder> -->
+            <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+            <!--             <On Platform="Android, iOS" Value="placeholder_2" /> -->
+            <!--             <On Platform="UWP" Value="Assets/placeholder_2.png" /> -->
+            <!--         </OnPlatform> -->
+            <!--     </ffimageloading:CachedImage.LoadingPlaceholder> -->
+            <!--     <ffimageloading:CachedImage.ErrorPlaceholder> -->
+            <!--         <OnPlatform x:TypeArguments="ImageSource"> -->
+            <!--             <On Platform="Android, iOS" Value="placeholder_2" /> -->
+            <!--             <On Platform="UWP" Value="Assets/placeholder_2.png" /> -->
+            <!--         </OnPlatform> -->
+            <!--     </ffimageloading:CachedImage.ErrorPlaceholder> -->
+            <!-- </ffimageloading:CachedImage> -->
             <Label
                 Grid.Row="2"
                 Text="{Binding Name}"

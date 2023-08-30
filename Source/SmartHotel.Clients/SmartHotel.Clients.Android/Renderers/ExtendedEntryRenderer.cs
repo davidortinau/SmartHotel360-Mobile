@@ -2,8 +2,9 @@
 using Android.Content;
 using SmartHotel.Clients.Core.Controls;
 using SmartHotel.Clients.Droid.Renderers;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(ExtendedEntry), typeof(ExtendedEntryRenderer))]
 namespace SmartHotel.Clients.Droid.Renderers

@@ -1,6 +1,7 @@
 ﻿using SmartHotel.Clients.Core.Models;
 using SmartHotel.Clients.Core.ViewModels;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Views
 {
@@ -10,7 +11,7 @@ namespace SmartHotel.Clients.Core.Views
 		{
 			InitializeComponent ();
 
-            MessagingCenter.Subscribe<SettingsViewModel<RemoteSettings>>(this, MessengerKeys.LoadSettingsRequested, OnLoadSettingsRequested);
+            CustomMessagingCenter.Subscribe<SettingsViewModel<RemoteSettings>>(this, MessengerKeys.LoadSettingsRequested, OnLoadSettingsRequested);
         }
 
         void OnLoadSettingsRequested(SettingsViewModel<RemoteSettings> settingsViewModel)

@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="SmartHotel.Clients.Core.Views.MyRoomView"
-    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core"
+    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls"
     xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
-    xmlns:utils="clr-namespace:SmartHotel.Clients.Core.Utils;assembly=SmartHotel.Clients.Core"
-    xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
+    xmlns:utils="clr-namespace:SmartHotel.Clients.Core.Utils"
+    xmlns:xamanimation="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
     Title="101"
     utils:NavigationBarAttachedProperty.TextColor="{StaticResource WhiteColor}">
     <ContentPage.Resources>
@@ -164,12 +164,12 @@
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding OpenDoorCommand}" Text="Open door">
-            <ToolbarItem.Icon>
+            <ToolbarItem.IconImageSource>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android, iOS" Value="ic_card" />
                     <On Platform="UWP" Value="Assets/ic_card.png" />
                 </OnPlatform>
-            </ToolbarItem.Icon>
+            </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Triggers>
@@ -669,17 +669,17 @@
                                         <OnIdiom x:TypeArguments="ImageSource">
                                             <OnIdiom.Phone>
                                                 <OnPlatform
-                                                    x:TypeArguments="ImageSource"
-                                                    Android="map"
-                                                    WinPhone="Assets/map.png"
-                                                    iOS="map" />
+                                                    x:TypeArguments="ImageSource">
+                                                    <On Platform="Android, iOS" Value="map" />
+                                                    <On Platform="UWP" Value="Assets/map.png" />
+                                                </OnPlatform>
                                             </OnIdiom.Phone>
                                             <OnIdiom.Desktop>
                                                 <OnPlatform
-                                                    x:TypeArguments="ImageSource"
-                                                    Android="map"
-                                                    WinPhone="Assets/map_desktop.png"
-                                                    iOS="map" />
+                                                    x:TypeArguments="ImageSource">
+                                                    <On Platform="Android, iOS" Value="map" />
+                                                    <On Platform="UWP" Value="Assets/map_desktop.png" />
+                                                </OnPlatform>
                                             </OnIdiom.Desktop>
                                         </OnIdiom>
                                     </Image.Source>

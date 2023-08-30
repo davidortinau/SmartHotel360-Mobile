@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using SmartHotel.Clients.Core.Extensions;
 using System.Linq;
 using System;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Services.Hotel
 {
@@ -39,7 +40,8 @@ namespace SmartHotel.Clients.Core.Services.Hotel
                 Id = 1,
                 CityId = 3,
                 Name = "Secret Camp Hotel",
-                Picture = Device.RuntimePlatform == Device.UWP ? "Assets/img_1.png" : "img_1",
+                Picture = // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
+Device.RuntimePlatform == Device.WinUI ? "Assets/img_1.png" : "img_1",
                 City = "Barcelona, Spain",
                 PricePerNight = 76,
                 Price = 76,
@@ -63,7 +65,8 @@ namespace SmartHotel.Clients.Core.Services.Hotel
                 Id = 2,
                 CityId = 2,
                 Name = "Prism Hotel",
-                Picture = Device.RuntimePlatform == Device.UWP ? "Assets/img_2.png" : "img_2",
+                Picture = // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
+Device.RuntimePlatform == Device.WinUI ? "Assets/img_2.png" : "img_2",
                 City = "Seville, Spain",
                 PricePerNight = 161,
                 Price = 161,
@@ -87,7 +90,8 @@ namespace SmartHotel.Clients.Core.Services.Hotel
                 Id = 3,
                 CityId = 1,
                 Name = "Elite Hotel",
-                Picture = Device.RuntimePlatform == Device.UWP ? "Assets/img_3.png" : "img_3",
+                Picture = // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
+Device.RuntimePlatform == Device.WinUI ? "Assets/img_3.png" : "img_3",
                 City = "Seattle, United States",
                 PricePerNight = 202,
                 Price = 202,

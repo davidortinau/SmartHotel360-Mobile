@@ -1,17 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
+<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:SmartHotel.Clients.Core.Views;assembly=SmartHotel.Clients.Core"
+    xmlns:views="clr-namespace:SmartHotel.Clients.Core.Views"
     x:Class="SmartHotel.Clients.Core.Views.MainView"
-    MasterBehavior="Popover"
-    Title="SmartHotel">
-    <MasterDetailPage.Master>
+    FlyoutLayoutBehavior="Popover"
+    Title="SmartHotel"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="False">
+    <FlyoutPage.Flyout>
         <views:MenuView
             BindingContext="{Binding MenuViewModel}"/>
-    </MasterDetailPage.Master>
-    <MasterDetailPage.Detail>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
         <ContentPage 
+            ios:Page.UseSafeArea="False"
             BackgroundColor="Transparent" />
-    </MasterDetailPage.Detail>
-</MasterDetailPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

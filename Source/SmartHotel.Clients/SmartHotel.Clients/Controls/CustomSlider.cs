@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using Xamarin.Forms;
+using Microsoft.Maui.Devices;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -84,7 +86,7 @@ namespace SmartHotel.Clients.Core.Controls
 
             if (!alreadyAllocated && SliderControl.Bounds.Width > -1 && SliderControl.Bounds.Height > -1)
             {
-                if (Device.Idiom != TargetIdiom.Desktop)
+                if (DeviceInfo.Idiom != DeviceIdiom.Desktop)
                     alreadyAllocated = true;
 
                 MoveIndicator(SliderControl.Value);
@@ -101,6 +103,7 @@ namespace SmartHotel.Clients.Core.Controls
             content.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             content.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
 
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             SliderControl = new Slider
             {
                 Minimum = Minimum,
@@ -117,8 +120,9 @@ namespace SmartHotel.Clients.Core.Controls
             };
 
             Grid.SetRow(SliderControl, 0);
-            content.Children.Add(SliderControl);
+            content.Add(SliderControl);
 
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             BackgroundImageControl = new Image
             {
                 Margin = new Thickness(
@@ -126,15 +130,15 @@ namespace SmartHotel.Clients.Core.Controls
                     Device.RuntimePlatform == Device.UWP ? 8 : -5,
                     -content.Padding.Right / 2, 
                     0),
-                Aspect = Device.Idiom == TargetIdiom.Desktop ? Aspect.AspectFill : Aspect.AspectFit,
-                HeightRequest = Device.Idiom == TargetIdiom.Desktop ? 12 : 18,
+                Aspect = DeviceInfo.Idiom == DeviceIdiom.Desktop ? Aspect.AspectFill : Aspect.AspectFit,
+                HeightRequest = DeviceInfo.Idiom == DeviceIdiom.Desktop ? 12 : 18,
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 InputTransparent = true
             };
 
             Grid.SetRow(BackgroundImageControl, 0);
-            content.Children.Add(BackgroundImageControl);
+            content.Add(BackgroundImageControl);
 
             ValueContainer = new StackLayout
             {
@@ -143,6 +147,7 @@ namespace SmartHotel.Clients.Core.Controls
                 InputTransparent = true
             };
 
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             ThumbImageControl = new Image
             {
                 Aspect = Aspect.AspectFit,
@@ -153,8 +158,8 @@ namespace SmartHotel.Clients.Core.Controls
 
             Grid.SetRow(ValueContainer, 0);
             Grid.SetRowSpan(ValueContainer, 2);
-            content.Children.Add(ValueContainer);
-            ValueContainer.Children.Add(ThumbImageControl);
+            content.Add(ValueContainer);
+            ValueContainer.Add(ThumbImageControl);
 
             ValueControl = new Label
             {
@@ -165,7 +170,7 @@ namespace SmartHotel.Clients.Core.Controls
             };
 
             UpdateDisplayValue();
-            ValueContainer.Children.Add(ValueControl);
+            ValueContainer.Add(ValueControl);
 
             Content = content;
         }

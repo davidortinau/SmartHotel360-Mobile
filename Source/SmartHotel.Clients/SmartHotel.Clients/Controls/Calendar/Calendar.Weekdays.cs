@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xamarin.Forms;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -12,7 +14,7 @@ namespace SmartHotel.Clients.Core.Controls
 		#region WeekdaysTextColor
 
 		public static readonly BindableProperty WeekdaysTextColorProperty =
-			BindableProperty.Create(nameof(WeekdaysTextColor), typeof(Color), typeof(Calendar), Color.FromHex("#aaaaaa"),
+			BindableProperty.Create(nameof(WeekdaysTextColor), typeof(Color), typeof(Calendar), Color.FromArgb("#aaaaaa"),
                 propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeWeekdaysTextColor((Color)newValue, (Color)oldValue));
 
 		protected void ChangeWeekdaysTextColor(Color newValue, Color oldValue)
@@ -36,7 +38,7 @@ namespace SmartHotel.Clients.Core.Controls
         #region WeekdaysBackgroundColor
 
         public static readonly BindableProperty WeekdaysBackgroundColorProperty =
-			BindableProperty.Create(nameof(WeekdaysBackgroundColor), typeof(Color), typeof(Calendar), Color.Transparent,
+			BindableProperty.Create(nameof(WeekdaysBackgroundColor), typeof(Color), typeof(Calendar), Colors.Transparent,
                 propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeWeekdaysBackgroundColor((Color)newValue, (Color)oldValue));
 
 		protected void ChangeWeekdaysBackgroundColor(Color newValue, Color oldValue)

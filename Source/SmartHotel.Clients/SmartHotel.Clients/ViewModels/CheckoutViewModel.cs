@@ -1,10 +1,8 @@
-﻿using Rg.Plugins.Popup.Services;
-using SmartHotel.Clients.Core.Services.Analytic;
+﻿using SmartHotel.Clients.Core.Services.Analytic;
 using SmartHotel.Clients.Core.ViewModels.Base;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
+using MvvmHelpers.Commands;
+using Mopups.Services;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {
@@ -26,12 +24,12 @@ namespace SmartHotel.Clients.Core.ViewModels
         {
             AppSettings.HasBooking = false;
 
-            MessagingCenter.Send(this, MessengerKeys.CheckoutRequested);
+            CustomMessagingCenter.Send(this, MessengerKeys.CheckoutRequested);
             analyticService.TrackEvent("Checkout");
 
-            if (PopupNavigation.Instance.PopupStack.Any())
+            if (MopupService.Instance.PopupStack.Any())
             {
-                return PopupNavigation.Instance.PopAllAsync(true);
+                return MopupService.Instance.PopAllAsync(true);
             }
             else
             {
@@ -43,12 +41,12 @@ namespace SmartHotel.Clients.Core.ViewModels
         {
             AppSettings.HasBooking = false;
 
-            MessagingCenter.Send(this, MessengerKeys.CheckoutRequested);
+            CustomMessagingCenter.Send(this, MessengerKeys.CheckoutRequested);
             analyticService.TrackEvent("Checkout");            
 
-            if (PopupNavigation.Instance.PopupStack.Any())
+            if (MopupService.Instance.PopupStack.Any())
             {
-                await PopupNavigation.Instance.PopAllAsync(true);
+                await MopupService.Instance.PopAllAsync(true);
             }
 
             await NavigationService.NavigateToAsync<BookingViewModel>();

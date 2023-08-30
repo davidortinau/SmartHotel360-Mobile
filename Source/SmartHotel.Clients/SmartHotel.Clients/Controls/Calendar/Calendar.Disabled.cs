@@ -1,5 +1,7 @@
 ﻿using System;
-using Xamarin.Forms;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -42,7 +44,8 @@ namespace SmartHotel.Clients.Core.Controls
         #region DisabledBorderWidth
 
         public static readonly BindableProperty DisabledBorderWidthProperty =
-            BindableProperty.Create(nameof(DisabledBorderWidth), typeof(int), typeof(Calendar), Device.RuntimePlatform == Device.iOS ? 1 : 3,
+            BindableProperty.Create(nameof(DisabledBorderWidth), typeof(int), typeof(Calendar), // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
+Device.RuntimePlatform == Device.iOS ? 1 : 3,
                                     propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDisabledBorderWidth((int)newValue, (int)oldValue));
 
         protected void ChangeDisabledBorderWidth(int newValue, int oldValue)
@@ -66,7 +69,7 @@ namespace SmartHotel.Clients.Core.Controls
         #region DisabledBorderColor
 
         public static readonly BindableProperty DisabledBorderColorProperty =
-            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(Calendar), Color.FromHex("#cccccc"),
+            BindableProperty.Create(nameof(DisabledBorderColor), typeof(Color), typeof(Calendar), Color.FromArgb("#cccccc"),
                                     propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDisabledBorderColor((Color)newValue, (Color)oldValue));
 
         protected void ChangeDisabledBorderColor(Color newValue, Color oldValue)
@@ -90,7 +93,7 @@ namespace SmartHotel.Clients.Core.Controls
         #region DisabledBackgroundColor
 
         public static readonly BindableProperty DisabledBackgroundColorProperty =
-            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(Calendar), Color.Gray,
+            BindableProperty.Create(nameof(DisabledBackgroundColor), typeof(Color), typeof(Calendar), Colors.Gray,
                                     propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDisabledBackgroundColor((Color)newValue, (Color)oldValue));
 
         protected void ChangeDisabledBackgroundColor(Color newValue, Color oldValue)
@@ -114,7 +117,7 @@ namespace SmartHotel.Clients.Core.Controls
         #region DisabledTextColor
 
         public static readonly BindableProperty DisabledTextColorProperty =
-            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(Calendar), Color.FromHex("#dddddd"),
+            BindableProperty.Create(nameof(DisabledTextColor), typeof(Color), typeof(Calendar), Color.FromArgb("#dddddd"),
                                     propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDisabledTextColor((Color)newValue, (Color)oldValue));
 
         protected void ChangeDisabledTextColor(Color newValue, Color oldValue)

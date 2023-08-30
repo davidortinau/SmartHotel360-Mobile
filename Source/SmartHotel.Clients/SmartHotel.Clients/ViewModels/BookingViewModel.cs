@@ -10,7 +10,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
+using MvvmHelpers.Commands;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {
@@ -32,7 +34,7 @@ namespace SmartHotel.Clients.Core.ViewModels
         {
             this.analyticService = analyticService;
             this.hotelService = hotelService;
-            dismissKeyboardService = DependencyService.Get<IDismissKeyboardService>();
+            dismissKeyboardService = Locator.Instance.Resolve<IDismissKeyboardService>();
 
             cities = new List<Models.City>();
             suggestions = new List<string>();

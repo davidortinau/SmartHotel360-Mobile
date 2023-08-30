@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -8,7 +10,7 @@ namespace SmartHotel.Clients.Core.Controls
         #region DatesTextColorOutsideMonth
 
         public static readonly BindableProperty DatesTextColorOutsideMonthProperty =
-            BindableProperty.Create(nameof(DatesTextColorOutsideMonth), typeof(Color), typeof(Calendar), Color.FromHex("#aaaaaa"),
+            BindableProperty.Create(nameof(DatesTextColorOutsideMonth), typeof(Color), typeof(Calendar), Color.FromArgb("#aaaaaa"),
                                     propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDatesTextColorOutsideMonth((Color)newValue, (Color)oldValue));
 
         protected void ChangeDatesTextColorOutsideMonth(Color newValue, Color oldValue)
@@ -32,7 +34,7 @@ namespace SmartHotel.Clients.Core.Controls
         #region DatesBackgroundColorOutsideMonth
 
         public static readonly BindableProperty DatesBackgroundColorOutsideMonthProperty =
-            BindableProperty.Create(nameof(DatesBackgroundColorOutsideMonth), typeof(Color), typeof(Calendar), Color.White,
+            BindableProperty.Create(nameof(DatesBackgroundColorOutsideMonth), typeof(Color), typeof(Calendar), Colors.White,
                                     propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDatesBackgroundColorOutsideMonth((Color)newValue, (Color)oldValue));
 
         protected void ChangeDatesBackgroundColorOutsideMonth(Color newValue, Color oldValue)

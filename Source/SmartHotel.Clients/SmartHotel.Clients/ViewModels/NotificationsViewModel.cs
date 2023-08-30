@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
 using SmartHotel.Clients.Core.ViewModels.Base;
 using System.Windows.Input;
-using Xamarin.Forms;
 using SmartHotel.Clients.Core.Services.Notification;
 using SmartHotel.Clients.Core.Services.Analytic;
 using MvvmHelpers;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {

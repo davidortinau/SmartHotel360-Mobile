@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Xamarin.Forms;
-using Xamarin.Forms.Internals;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Controls
 {
@@ -54,16 +54,16 @@ namespace SmartHotel.Clients.Core.Controls
                 if (IsSimpleType(property.PropertyType))
                 {
                     var valueContainer = AddPropertyValue(property, o);
-                    container.Children.Add(valueContainer);
+                    container.Add(valueContainer);
                 }
                 else
                 {
                     var title = AddSectionTitle(property.Name);
-                    container.Children.Add(title);
+                    container.Add(title);
 
                     var pValue = property.GetValue(o);
                     var objectContainer = GenerateControlsForObject(pValue);
-                    container.Children.Add(objectContainer);
+                    container.Add(objectContainer);
                 }
             }
 
@@ -79,7 +79,7 @@ namespace SmartHotel.Clients.Core.Controls
                 Style = GetStyle("SettingsTitleStyle")
             };
 
-            container.Children.Add(label);
+            container.Add(label);
             return container;
         }
 
@@ -94,7 +94,7 @@ namespace SmartHotel.Clients.Core.Controls
                 Style = GetStyle("SettingsValueTitleStyle")
             };
 
-            container.Children.Add(title);
+            container.Add(title);
 
             var val = new Label
             {
@@ -102,7 +102,7 @@ namespace SmartHotel.Clients.Core.Controls
                 Style = GetStyle("SettingsValueStyle")
             };
 
-            container.Children.Add(val);
+            container.Add(val);
 
             return container;
         }

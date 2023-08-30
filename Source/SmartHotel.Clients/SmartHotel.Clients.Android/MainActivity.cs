@@ -14,9 +14,10 @@ using SmartHotel.Clients.Core.ViewModels.Base;
 using SmartHotel.Clients.Droid.Services.Authentication;
 using SmartHotel.Clients.Droid.Services.CardEmulation;
 using System.Linq;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using CarouselViewRenderer = CarouselView.FormsPlugin.Android.CarouselViewRenderer;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Droid
 {
@@ -26,7 +27,7 @@ namespace SmartHotel.Clients.Droid
         Theme = "@style/MainTheme", 
         MainLauncher = false,
         ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : FormsAppCompatActivity
+    public class MainActivity : MauiAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Views.Templates
 {
@@ -34,9 +35,10 @@ namespace SmartHotel.Clients.Core.Views.Templates
 
         ICommand TransitionCommand => new Command(async () =>
         {
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             var isUwp = Device.RuntimePlatform == Device.UWP;
 
-            DeleteContainer.BackgroundColor = Color.FromHex("#EC0843");
+            DeleteContainer.BackgroundColor = Color.FromArgb("#EC0843");
             DeleteImage.Source = isUwp ? $"Assets/ic_paperbin.png" : $"ic_paperbin";
 
             await this.TranslateTo(-Width, 0, 500, Easing.SinIn);
@@ -50,10 +52,11 @@ namespace SmartHotel.Clients.Core.Views.Templates
 
         void InitializeCell()
         {
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             var isUwp = Device.RuntimePlatform == Device.UWP;
 
             TranslationX = 0;
-            DeleteContainer.BackgroundColor = Color.FromHex("#F2F2F2");
+            DeleteContainer.BackgroundColor = Color.FromArgb("#F2F2F2");
             DeleteImage.Source = isUwp ? $"Assets/ic_paperbin_red.png" : $"ic_paperbin_red";
         }
     }

@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Services.Dialog
 {
@@ -18,6 +19,7 @@ namespace SmartHotel.Clients.Core.Services.Dialog
         {
             var toastConfig = new ToastConfig(message);
             toastConfig.SetDuration(duration);
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             toastConfig.Position = Device.RuntimePlatform == Device. UWP ? ToastPosition.Top : ToastPosition.Bottom;
 
             // ICON

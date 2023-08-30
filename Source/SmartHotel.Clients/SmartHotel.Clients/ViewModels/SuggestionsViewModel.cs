@@ -54,7 +54,7 @@ namespace SmartHotel.Clients.Core.ViewModels
                     CustomPins.Add(new CustomPin
                     {
                         Label = suggestion.Name,
-                        Position = new Xamarin.Forms.Maps.Position(suggestion.Latitude, suggestion.Longitude),
+                        Position = new Microsoft.Maui.Devices.Sensors.Location(suggestion.Latitude, suggestion.Longitude),
                         Type = suggestion.SuggestionType
                     });
                 }

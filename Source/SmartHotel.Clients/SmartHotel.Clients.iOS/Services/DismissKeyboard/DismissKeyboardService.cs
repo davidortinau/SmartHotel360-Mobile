@@ -2,7 +2,6 @@
 using SmartHotel.Clients.iOS.Services.DismissKeyboard;
 using UIKit;
 
-[assembly: Xamarin.Forms.Dependency(typeof(DismissKeyboardService))]
 namespace SmartHotel.Clients.iOS.Services.DismissKeyboard
 {
     public class DismissKeyboardService : IDismissKeyboardService

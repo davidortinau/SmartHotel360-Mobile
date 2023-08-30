@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ctrls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core"
-    xmlns:effects="clr-namespace:SmartHotel.Clients.Core.Effects;assembly=SmartHotel.Clients.Core"
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"   
-    xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"  
+    xmlns:ctrls="clr-namespace:SmartHotel.Clients.Core.Controls"
+    xmlns:effects="clr-namespace:SmartHotel.Clients.Core.Effects"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"   
+    xmlns:xamanimation="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"  
     xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
     x:Class="SmartHotel.Clients.Core.Views.LoginView">
     <ContentPage.Resources>
@@ -36,9 +36,7 @@
                 <Setter Property="FontSize" 
                         Value="{StaticResource LittleSize}" />
                 <Setter Property="Margin"
-                        Value="{OnPlatform 
-                            Android='5, 0, 0, 0' 
-                            iOS='0, 8, 0, 0'}" />
+                        Value="{OnPlatform Android='5, 0, 0, 0', iOS='0, 8, 0, 0'}" />
             </Style>
 
             <Style x:Key="ForgotPwdLabelStyle"
@@ -47,8 +45,7 @@
                 <Setter Property="FontSize"
                         Value="{StaticResource LittleSize}" />
                 <Setter Property="Margin" 
-                        Value="{OnPlatform 
-                            Android='0, -3, 5, 0'}" />
+                        Value='{OnPlatform 0, Android="0, -3, 5, 0"}' />
             </Style>
 
             <Style x:Key="SignUpTextStyle"
@@ -66,7 +63,7 @@
                 <Setter Property="TextColor"
                         Value="{StaticResource OrangeColor}" />
                 <Setter Property="FontFamily"
-                        Value="{StaticResource PoppinsBold}" />
+                        Value="PoppinsBold" />
             </Style>
 
         </ResourceDictionary>
@@ -88,45 +85,45 @@
                     <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
                 <!-- Top image -->
-                <ffimageloading:CachedImage 
+                <Image
                     Grid.Row="0"
                     Aspect="AspectFill"
                     Source="{OnPlatform
-                        Android='img_header_background_1'
-                        iOS='img_header_background_1'
+                        Android='img_header_background_1',
+                        iOS='img_header_background_1',
                         UWP='Assets/img_header_background_2.png'}" />
                 <!-- Sign in form -->
                 <FlexLayout
                     StyleClass="signin-form"
                     Grid.Row="0"
                     FlexLayout.JustifyContent="{OnIdiom
-                        Desktop='Start'
-                        Tablet='Start'
+                        Desktop='Start',
+                        Tablet='Start',
                         Phone='Center'}"
                     FlexLayout.AlignItems="{OnIdiom
-                        Desktop='Center'
-                        Tablet='Center'
+                        Desktop='Center',
+                        Tablet='Center',
                         Phone='Stretch'}">
                     <FlexLayout
                         StyleId="signin-form-top-logo-container"
                         FlexLayout.AlignItems="{OnIdiom
-                            Desktop='End'
-                            Tablet='End'
+                            Desktop='End',
+                            Tablet='End',
                             Phone='Start'}">
                         <Image
                             x:Name="Logo"
                             StyleId="signin-form-top-logo"
                             Source="{OnPlatform
-                                Android='logo_splash'
-                                iOS='logo_splash'
+                                Android='logo_splash',
+                                iOS='logo_splash',
                                 UWP='Assets/logo_splash.png'}"
                             HeightRequest="{OnIdiom 
-                                Desktop='100' 
-                                Tablet='100' 
+                                Desktop='100', 
+                                Tablet='100', 
                                 Phone='95'}"
                             VerticalOptions="{OnIdiom 
-                                Desktop='End'
-                                Tablet='End' 
+                                Desktop='End',
+                                Tablet='End', 
                                 Phone='Start'}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer 
@@ -141,11 +138,11 @@
                         TextColor="{Binding Path=LineColor, Source={Reference UsernameEntry}}"
                         Style="{StaticResource HeaderTextStyle}"
                         HorizontalOptions="{OnIdiom
-                            Desktop='Center'
-                            Tablet='Center'
+                            Desktop='Center',
+                            Tablet='Center',
                             Phone='FillAndExpand'}"
                         WidthRequest="{OnIdiom
-                            Desktop='350'
+                            Desktop='350',
                             Tablet='320'}" />
                     <ctrls:ExtendedEntry
                         x:Name="UsernameEntry"
@@ -153,11 +150,11 @@
                         AutomationId="username"
                         Text="{Binding UserName.Value, Mode=TwoWay}"
                         HorizontalOptions="{OnIdiom
-                            Desktop='Center'
-                            Tablet='Center'
+                            Desktop='Center',
+                            Tablet='Center',
                             Phone='FillAndExpand'}"
                         WidthRequest="{OnIdiom
-                            Desktop='350'
+                            Desktop='350',
                             Tablet='320'}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="UniqueStates">
@@ -185,11 +182,11 @@
                         TextColor="{Binding Path=LineColor, Source={Reference PasswordEntry}}"
                         Style="{StaticResource HeaderTextStyle}"
                         HorizontalOptions="{OnIdiom
-                            Desktop='Center'
-                            Tablet='Center'
+                            Desktop='Center',
+                            Tablet='Center',
                             Phone='FillAndExpand'}"
                         WidthRequest="{OnIdiom
-                            Desktop='350'
+                            Desktop='350',
                             Tablet='320'}" />
                     <ctrls:ExtendedEntry
                         x:Name="PasswordEntry"
@@ -198,11 +195,11 @@
                         AutomationId="password"
                         Text="{Binding Password.Value, Mode=TwoWay}"
                         HorizontalOptions="{OnIdiom
-                            Desktop='Center'
-                            Tablet='Center'
+                            Desktop='Center',
+                            Tablet='Center',
                             Phone='FillAndExpand'}"
                         WidthRequest="{OnIdiom
-                            Desktop='350'
+                            Desktop='350',
                             Tablet='320'}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="UniqueStates">
@@ -230,7 +227,7 @@
                         Text="{extensions:Translate ForgotPassword}"
                         Style="{StaticResource ForgotPwdLabelStyle}"
                         WidthRequest="{OnIdiom
-                            Desktop='350'
+                            Desktop='350',
                             Tablet='320'}">
                         <Label.Effects>
                             <effects:UnderlineTextEffect />
@@ -244,12 +241,12 @@
                     <FlexLayout
                         StyleId="signup-container"
                         FlexLayout.AlignItems="{OnIdiom
-                            Desktop='Start'
-                            Tablet='Start'
+                            Desktop='Start',
+                            Tablet='Start',
                             Phone='End'}"
                         Margin="{OnIdiom
-                            Desktop='0, 200, 0, 0'
-                            Tablet='0, 200, 0, 0'
+                            Desktop='0, 200, 0, 0',
+                            Tablet='0, 200, 0, 0',
                             Phone='0, 0, 0, 36'}">
                         <Label
                             Text="{extensions:Translate CreateAccount}"
@@ -266,16 +263,16 @@
                     Grid.Row="1"    
                     StyleId="signin-buttons-container"
                     FlexLayout.AlignItems="{OnIdiom
-                        Desktop='Center'
-                        Tablet='Center'
+                        Desktop='Center',
+                        Tablet='Center',
                         Phone='Stretch'}">
                     <ctrls:ButtonFrame
                         HorizontalOptions="{OnIdiom
-                            Desktop='Center'
-                            Tablet='Center'
+                            Desktop='Center',
+                            Tablet='Center',
                             Phone='FillAndExpand'}"
                         WidthRequest="{OnIdiom
-                            Desktop='350'
+                            Desktop='350',
                             Tablet='320'}">
                         <Button
                             Text="{extensions:Translate SignInMayus}"
@@ -288,19 +285,19 @@
                         Text="or"
                         FlexLayout.AlignSelf="Center"
                         TextColor="{StaticResource BlackTextColor}"
-                        FontFamily="{StaticResource PoppinsRegular}"
+                        FontFamily="PoppinsRegular"
                         FontSize="{StaticResource MediumSize}"
                         Margin="{OnPlatform
-                            Android='0,1'
-                            iOS='0,8'
+                            Android='0,1',
+                            iOS='0,8',
                             UWP='0,8'}" />
                     <ctrls:ButtonFrame
                         HorizontalOptions="{OnIdiom
-                            Desktop='Center'
-                            Tablet='Center'
+                            Desktop='Center',
+                            Tablet='Center',
                             Phone='FillAndExpand'}"
                         WidthRequest="{OnIdiom
-                            Desktop='350'
+                            Desktop='350',
                             Tablet='320'}">
                         <Button
                             Text="{extensions:Translate SignInMicrosoftMayus}"

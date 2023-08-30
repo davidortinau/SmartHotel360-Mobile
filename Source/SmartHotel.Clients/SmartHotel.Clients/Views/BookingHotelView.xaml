@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SmartHotel.Clients.Core.Views.BookingHotelView"   
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"    
-    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core"
-    xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates;assembly=SmartHotel.Clients.Core"
-    xmlns:utils="clr-namespace:SmartHotel.Clients.Core.Utils;assembly=SmartHotel.Clients.Core"  
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"    
+    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls"
+    xmlns:templates="clr-namespace:SmartHotel.Clients.Core.Views.Templates"
+    xmlns:utils="clr-namespace:SmartHotel.Clients.Core.Utils"  
     xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
     BackgroundColor="{StaticResource WhiteColor}"  
     utils:NavigationBarAttachedProperty.TextColor="{StaticResource GreenColor}">
@@ -240,26 +240,33 @@
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand">
                     <Grid>
-                        <ffimageloading:CachedImage 
+                        <Image
                             Source="{Binding Hotel.DefaultPicture, Converter={StaticResource HotelImageConverter}}" 
                             Aspect="AspectFill"
-                            DownsampleToViewSize="true"
                             HeightRequest="420"
-					        HorizontalOptions="FillAndExpand"
-					        VerticalOptions="Start">
-                            <ffimageloading:CachedImage.LoadingPlaceholder>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="placeholder_2" />
-                                    <On Platform="UWP" Value="Assets/placeholder_2.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.LoadingPlaceholder>
-                            <ffimageloading:CachedImage.ErrorPlaceholder>
-                                <OnPlatform x:TypeArguments="ImageSource">
-                                    <On Platform="Android, iOS" Value="placeholder_2" />
-                                    <On Platform="UWP" Value="Assets/placeholder_2.png" />
-                                </OnPlatform>
-                            </ffimageloading:CachedImage.ErrorPlaceholder>
-                        </ffimageloading:CachedImage>
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Start"
+                            />
+             <!--            <ffimageloading:CachedImage  -->
+             <!--                Source="{Binding Hotel.DefaultPicture, Converter={StaticResource HotelImageConverter}}"  -->
+             <!--                Aspect="AspectFill" -->
+             <!--                DownsampleToViewSize="true" -->
+             <!--                HeightRequest="420" -->
+					        <!-- HorizontalOptions="FillAndExpand" -->
+					        <!-- VerticalOptions="Start"> -->
+             <!--                <ffimageloading:CachedImage.LoadingPlaceholder> -->
+             <!--                    <OnPlatform x:TypeArguments="ImageSource"> -->
+             <!--                        <On Platform="Android, iOS" Value="placeholder_2" /> -->
+             <!--                        <On Platform="UWP" Value="Assets/placeholder_2.png" /> -->
+             <!--                    </OnPlatform> -->
+             <!--                </ffimageloading:CachedImage.LoadingPlaceholder> -->
+             <!--                <ffimageloading:CachedImage.ErrorPlaceholder> -->
+             <!--                    <OnPlatform x:TypeArguments="ImageSource"> -->
+             <!--                        <On Platform="Android, iOS" Value="placeholder_2" /> -->
+             <!--                        <On Platform="UWP" Value="Assets/placeholder_2.png" /> -->
+             <!--                    </OnPlatform> -->
+             <!--                </ffimageloading:CachedImage.ErrorPlaceholder> -->
+             <!--            </ffimageloading:CachedImage> -->
                         <Grid
                             x:Name="SubHeaderView"
                             BackgroundColor="{StaticResource WhiteColor}"

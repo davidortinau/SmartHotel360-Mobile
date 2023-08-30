@@ -1,4 +1,4 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using Mopups.Pages;
 
 namespace SmartHotel.Clients.Core.Views
 {

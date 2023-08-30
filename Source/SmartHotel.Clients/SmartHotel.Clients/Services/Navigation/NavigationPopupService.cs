@@ -1,8 +1,6 @@
-﻿using Rg.Plugins.Popup.Pages;
-using Rg.Plugins.Popup.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using SmartHotel.Clients.Core.ViewModels.Base;
-using System;
-using System.Threading.Tasks;
 
 namespace SmartHotel.Clients.Core.Services.Navigation
 {
@@ -17,7 +15,7 @@ namespace SmartHotel.Clients.Core.Services.Navigation
 
             if (page is PopupPage)
             {
-                await PopupNavigation.Instance.PushAsync(page as PopupPage, animate);
+                await MopupService.Instance.PushAsync(page as PopupPage, animate);
             }
             else
             {

@@ -4,12 +4,13 @@ using SmartHotel.Clients.Core.Services.Navigation;
 using SmartHotel.Clients.Core.ViewModels;
 using SmartHotel.Clients.Core.ViewModels.Base;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui.Controls.Xaml;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SmartHotel.Clients
@@ -24,8 +25,8 @@ namespace SmartHotel.Clients
         }
         public App()
         {
-            AuthenticationClient =
-                new PublicClientApplication($"{AppSettings.B2cAuthority}{AppSettings.B2cTenant}", AppSettings.B2cClientId);
+            // AuthenticationClient =
+            //     new($"{AppSettings.B2cAuthority}{AppSettings.B2cTenant}", AppSettings.B2cClientId);
 
             InitializeComponent();
 

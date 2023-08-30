@@ -5,7 +5,9 @@ using SmartHotel.Clients.Core.ViewModels.Base;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
+using MvvmHelpers.Commands;
 
 namespace SmartHotel.Clients.Core.ViewModels
 {
@@ -57,7 +59,7 @@ namespace SmartHotel.Clients.Core.ViewModels
 
         bool Validate() => settingsFileUrl.Validate();
 
-        async Task UpdateSettingsAsync(object obj)
+        async Task UpdateSettingsAsync()
         {
             try
             {
@@ -84,7 +86,7 @@ namespace SmartHotel.Clients.Core.ViewModels
             }
             finally
             {
-                MessagingCenter.Send(this, MessengerKeys.LoadSettingsRequested);
+                CustomMessagingCenter.Send(this, MessengerKeys.LoadSettingsRequested);
                 IsBusy = false;
             }
         }

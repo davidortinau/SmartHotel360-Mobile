@@ -1,15 +1,16 @@
 ﻿using SmartHotel.Clients.Core.Models;
 using System;
 using System.Globalization;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Converters
 {
     public class SuggestionTypeToColorConverter : IValueConverter
     {
-        readonly Color restaurantColor = Color.FromHex("#BD4B14");
-        readonly Color eventColor = Color.FromHex("#348E94");
-        readonly Color noColor = Color.FromHex("#FFFFFF");
+        readonly Color restaurantColor = Color.FromArgb("#BD4B14");
+        readonly Color eventColor = Color.FromArgb("#348E94");
+        readonly Color noColor = Color.FromArgb("#FFFFFF");
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SmartHotel.Clients.Core.Views.BookingCalendarView"      
-    xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation" 
-    xmlns:utils="clr-namespace:SmartHotel.Clients.Core.Utils;assembly=SmartHotel.Clients.Core"  
-    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls;assembly=SmartHotel.Clients.Core" 
+    xmlns:xamanimation="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations" 
+    xmlns:utils="clr-namespace:SmartHotel.Clients.Core.Utils"  
+    xmlns:controls="clr-namespace:SmartHotel.Clients.Core.Controls" 
     BackgroundColor="{StaticResource WhiteColor}"
     utils:NavigationBarAttachedProperty.TextColor="{StaticResource WhiteColor}">
     <ContentPage.Resources>

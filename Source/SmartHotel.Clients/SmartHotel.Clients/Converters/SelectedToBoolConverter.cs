@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Converters
 {
@@ -12,6 +13,7 @@ namespace SmartHotel.Clients.Core.Converters
             if (value == null)
                 return false;
 
+            // TODO Xamarin.Forms.Device.RuntimePlatform is no longer supported. Use Microsoft.Maui.Devices.DeviceInfo.Platform instead. For more details see https://learn.microsoft.com/en-us/dotnet/maui/migration/forms-projects#device-changes
             if (Device.RuntimePlatform == Device.UWP)
             {
                 var cell = parameter as Grid;

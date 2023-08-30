@@ -1,6 +1,6 @@
-﻿using Xamarin.Essentials;
-using SmartHotel.Clients.Core.Models;
+﻿using SmartHotel.Clients.Core.Models;
 using SmartHotel.Clients.Core.Utils;
+using Microsoft.Maui.Storage;
 
 namespace SmartHotel.Clients.Core
 {
@@ -43,7 +43,7 @@ namespace SmartHotel.Clients.Core
 	    const string defaultRoomId = "";
 
         // Fakes
-        const bool defaultUseFakes = false;
+        const bool defaultUseFakes = true;
 
         const string root = "https://backend.smarthotel360.com/";
 

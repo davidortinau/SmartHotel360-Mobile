@@ -1,7 +1,11 @@
 ﻿using SmartHotel.Clients.Core.Models;
 using System;
 using System.Diagnostics;
-using Xamarin.Forms.Maps;
+using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Controls.Maps;
+using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace SmartHotel.Clients.Core.Helpers
 {
@@ -30,7 +34,7 @@ namespace SmartHotel.Clients.Core.Helpers
             try
             {
                 var location = GeoLocation.Parse(AppSettings.FallbackMapsLocation);
-                var initialPosition = new Position(
+                var initialPosition = new Location(
                       location.Latitude,
                       location.Longitude);
 

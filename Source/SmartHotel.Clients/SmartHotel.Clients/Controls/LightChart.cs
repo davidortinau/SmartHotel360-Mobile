@@ -14,6 +14,12 @@ namespace SmartHotel.Clients.Core.Controls
             LabelTextSize = 16f;
         }
 
+        public IEnumerable<ChartEntry> Entries
+        {
+            get { return entries; }
+            set { entries = value; }
+        }
+
         public override void DrawContent(SKCanvas canvas, int width, int height)
         {
             var relativeScaleWidth = width / 465.0f;
@@ -28,7 +34,7 @@ namespace SmartHotel.Clients.Core.Controls
             DrawChart(canvas, width, height, cx, cy, radiusSpace, strokeWidth, relativeScaleWidth);
         }
 
-        protected override void DrawChart(SKCanvas canvas, Entry entry, float radius, int cx, int cy, float strokeWidth)
+        protected override void DrawChart(SKCanvas canvas, ChartEntry entry, float radius, int cx, int cy, float strokeWidth)
         {
             using (var paint = new SKPaint
             {
@@ -39,7 +45,7 @@ namespace SmartHotel.Clients.Core.Controls
                 IsAntialias = true
             })
             {
-                var percent = (Math.Abs(entry.Value) - AbsoluteMinimum) / ValueRange;
+                var percent = (Math.Abs((float)entry.Value) - AbsoluteMinimum) / ValueRange;
                 var x = cx - radius - strokeWidth;
                 var y = cy / 2f - strokeWidth + LabelTextSize;
                 canvas.DrawLine(x, y, x + (2 * radius) * percent, y, paint);
@@ -51,9 +57,13 @@ namespace SmartHotel.Clients.Core.Controls
         {
             if (CurrentValueEntry != null)
             {
-                canvas.DrawCaptionLabels(string.Empty, SKColor.Empty, $"{CurrentValueEntry.Value}%", SKColor.Parse("#283748"),
-                    LabelTextSize * relativeScaleWidth,
-                    new SKPoint(cx - CaptionMargin, cy / 2f + LabelTextSize), SKTextAlign.Center);
+                SKPaint paint = new SKPaint
+                {
+                    Color = SKColor.Parse("#283748"),
+                    TextAlign = SKTextAlign.Center
+                };
+
+                canvas.DrawText($"{CurrentValueEntry.Value}%", new SKPoint(cx - CaptionMargin, cy / 2f + LabelTextSize), paint);
             }
 
             // uncomment to add Desired value

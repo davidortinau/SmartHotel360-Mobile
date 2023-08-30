@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartHotel.Clients.Core.Controls.RemoteSettingsControl"
              BackgroundColor="{StaticResource WhiteColor}">
@@ -11,41 +11,24 @@
             <Color x:Key="WhiteColor">#FFFFFF</Color>
             
             <!-- FONTS -->
-            <OnPlatform x:Key="PoppinsBold"
-                        x:TypeArguments="x:String"
-                        iOS="Poppins-Bold"
-                        Android="Poppins-Bold.ttf#Poppins"
-                        WinPhone="/Assets/Fonts/Poppins-Bold.ttf#Poppins"/>
+            
+        <OnPlatform x:Key="LittleSize" x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="11" />
+                <On Platform="Android, WinUI" Value="12" />
+        </OnPlatform>
 
-            <OnPlatform x:Key="PoppinsRegular"
-                        x:TypeArguments="x:String"
-                        iOS="Poppins-Regular"
-                        Android="Poppins-Regular.ttf#Poppins"
-                        WinPhone="/Assets/Fonts/Poppins-Regular.ttf#Poppins"/>
+        <OnPlatform x:Key="MidMediumSize" x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="12" />
+                <On Platform="Android, WinUI" Value="14" />
+        </OnPlatform>
 
-            <OnPlatform x:Key="PoppinsSemiBold"
-                        x:TypeArguments="x:String"
-                        iOS="Poppins-SemiBold"
-                        Android="Poppins-SemiBold.ttf#Poppins"
-                        WinPhone="/Assets/Fonts/Poppins-SemiBold.ttf#Poppins"/>
+        <OnPlatform x:Key="MediumSize" x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="14" />
+                <On Platform="Android, WinUI" Value="16" />
+        </OnPlatform>
 
-            <OnPlatform x:Key="LittleSize"
-                        x:TypeArguments="x:Double"
-                        iOS="11"
-                        Android="12"
-                        WinPhone="12"/>
+            
 
-            <OnPlatform x:Key="MidMediumSize"
-                        x:TypeArguments="x:Double"
-                        iOS="12"
-                        Android="14"
-                        WinPhone="14"/>
-
-            <OnPlatform x:Key="MediumSize"
-                        x:TypeArguments="x:Double"
-                        iOS="14"
-                        Android="16"
-                        WinPhone="16"/>
 
             <!-- STYLES -->
             <Style x:Key="BaseLabelStyle" TargetType="{x:Type Label}">
@@ -58,21 +41,21 @@
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                 Value="{StaticResource PoppinsBold}" />
+                 Value="PoppinsBold" />
             </Style>
 
             <Style x:Key="PoppinsRegularLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource PoppinsRegular}" />
+                    Value="PoppinsRegular" />
             </Style>
 
             <Style x:Key="PoppinsSemiBoldLabelStyle"
                    TargetType="{x:Type Label}"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                    Value="{StaticResource PoppinsSemiBold}" />
+                    Value="PoppinsSemiBold" />
             </Style>
 
             <Style x:Key="SettingsTitleStyle" 

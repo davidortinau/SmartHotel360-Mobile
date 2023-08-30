@@ -1,6 +1,7 @@
 ﻿using SmartHotel.Clients.Core.Helpers;
 using SmartHotel.Clients.Core.ViewModels;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Views
 {
@@ -12,7 +13,7 @@ namespace SmartHotel.Clients.Core.Views
 
             InitializeComponent();
 
-            MessagingCenter.Subscribe<LoginViewModel>(this, MessengerKeys.SignInRequested, OnSignInRequested);
+            CustomMessagingCenter.Subscribe<LoginViewModel>(this, MessengerKeys.SignInRequested, OnSignInRequested);
         }
 
         protected override void OnAppearing()

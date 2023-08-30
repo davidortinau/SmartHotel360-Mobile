@@ -3,11 +3,12 @@ using SmartHotel.Clients.UWP.Extensions;
 using SmartHotel.Clients.UWP.Renderers;
 using System.ComponentModel;
 using System.Linq;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 [assembly: ExportRenderer(typeof(ExtendedEntry), typeof(ExtendedEntryRenderer))]
 namespace SmartHotel.Clients.UWP.Renderers
@@ -24,7 +25,7 @@ namespace SmartHotel.Clients.UWP.Renderers
             {
                 if (Control != null)
                 {
-                    Control.Style = App.Current.Resources["FormTextBoxStyle"] as Windows.UI.Xaml.Style;
+                    Control.Style = App.Window.Resources["FormTextBoxStyle"] as Windows.UI.Xaml.Style;
                 }
 
                 Control.Loaded -= OnControlLoaded;

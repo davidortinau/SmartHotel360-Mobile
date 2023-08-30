@@ -21,16 +21,18 @@ namespace SmartHotel.Clients.UWP
 
         void NativeCustomize()
         {
+            // TODO Windows.UI.ViewManagement.ApplicationView is no longer supported. Use Microsoft.UI.Windowing.AppWindow instead. For more details see https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/windowing
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(500, 500));
 
             // PC Customization
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
             {
+                // TODO Windows.UI.ViewManagement.ApplicationView is no longer supported. Use Microsoft.UI.Windowing.AppWindow instead. For more details see https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/windowing
                 var titleBar = ApplicationView.GetForCurrentView().TitleBar;
                 if (titleBar != null)
                 {
-                    titleBar.BackgroundColor = (Color)App.Current.Resources["NativeAccentColor"];
-                    titleBar.ButtonBackgroundColor = (Color)App.Current.Resources["NativeAccentColor"];
+                    titleBar.BackgroundColor = (Color)App.Window.Resources["NativeAccentColor"];
+                    titleBar.ButtonBackgroundColor = (Color)App.Window.Resources["NativeAccentColor"];
                 }
             }
 
@@ -41,12 +43,13 @@ namespace SmartHotel.Clients.UWP
                 if (statusBar != null)
                 {
                     statusBar.BackgroundOpacity = 1;
-                    statusBar.BackgroundColor = (Color)App.Current.Resources["NativeAccentColor"];
+                    statusBar.BackgroundColor = (Color)App.Window.Resources["NativeAccentColor"];
                 }
             }
 
             // Launch in Window Mode
-            var currentView = ApplicationView.GetForCurrentView();
+            // TODO Windows.UI.ViewManagement.ApplicationView is no longer supported. Use Microsoft.UI.Windowing.AppWindow instead. For more details see https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/windowing
+                        var currentView = ApplicationView.GetForCurrentView();
             if (currentView.IsFullScreenMode)
             {
                 currentView.ExitFullScreenMode();

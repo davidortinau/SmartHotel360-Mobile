@@ -14,19 +14,25 @@ namespace SmartHotel.Clients.Core.Controls
             LabelTextSize = 24f;
         }
 
+        public IEnumerable<ChartEntry> Entries
+        {
+            get { return entries; }
+            set { entries = value; }
+        }
+
         public float CaptionMargin { get; set; } = 12;
 
         public float LineSize { get; set; } = 28;
 
         public float StartAngle { get; set; } = -180;
 
-		public Entry CurrentValueEntry { get; set; }
+		public ChartEntry CurrentValueEntry { get; set; }
 
-		public Entry DesiredValueEntry { get; set; }
+		public ChartEntry DesiredValueEntry { get; set; }
 
-		protected float AbsoluteMinimum => Entries.Select(x => x.Value).Concat(new[] { MaxValue, MinValue, InternalMinValue ?? 0 }).Min(x => Math.Abs(x));
+		protected float AbsoluteMinimum => entries.Select(x => x.Value ?? 0).Concat(new[] { MaxValue, MinValue, InternalMinValue ?? 0 }).Min(x => Math.Abs(x));
 
-        float AbsoluteMaximum => Entries.Select(x => x.Value).Concat(new[] { MaxValue, MinValue, InternalMinValue ?? 0 }).Max(x => Math.Abs(x));
+        float AbsoluteMaximum => entries.Select(x => x.Value ?? 0).Concat(new[] { MaxValue, MinValue, InternalMinValue ?? 0 }).Max(x => Math.Abs(x));
 
         protected float ValueRange => AbsoluteMaximum - AbsoluteMinimum;
 
@@ -46,7 +52,7 @@ namespace SmartHotel.Clients.Core.Controls
         protected void DrawChart(SKCanvas canvas, int width, int height, int cx, int cy, float radiusSpace, float strokeWidth, float relativeScaleWidth)
         {
 
-            foreach (var entry in Entries)
+            foreach (var entry in entries)
             {
                 DrawChart(canvas, entry, radiusSpace, cx, cy, strokeWidth);
             }
@@ -54,7 +60,7 @@ namespace SmartHotel.Clients.Core.Controls
             DrawCaption(canvas, cx, cy, radiusSpace, relativeScaleWidth, strokeWidth);
         }
 
-        protected virtual void DrawChart(SKCanvas canvas, Entry entry, float radius, int cx, int cy, float strokeWidth)
+        protected virtual void DrawChart(SKCanvas canvas, ChartEntry entry, float radius, int cx, int cy, float strokeWidth)
         {
             using (var paint = new SKPaint
             {
@@ -67,7 +73,7 @@ namespace SmartHotel.Clients.Core.Controls
             {
                 using (var path = new SKPath())
                 {
-                    var sweepAngle = 180 * (Math.Abs(entry.Value) - AbsoluteMinimum) / ValueRange;
+                    var sweepAngle = 180 * (Math.Abs(entry.Value ?? 0) - AbsoluteMinimum) / ValueRange;
                     path.AddArc(SKRect.Create(cx - radius, cy - radius, 2 * radius, 2 * radius), StartAngle, sweepAngle);
 
                     canvas.DrawPath(path, paint); 
@@ -80,24 +86,46 @@ namespace SmartHotel.Clients.Core.Controls
         {
             var medium = AbsoluteMinimum + ((AbsoluteMaximum - AbsoluteMinimum) / 2);
 
-            canvas.DrawCaptionLabels(string.Empty, SKColor.Empty, $"{AbsoluteMinimum}°", SKColors.Black, LabelTextSize * relativeScaleWidth, new SKPoint(cx - radius - strokeWidth - CaptionMargin, cy), SKTextAlign.Center);
-            canvas.DrawCaptionLabels(string.Empty, SKColor.Empty, $"{medium}°", SKColors.Black, LabelTextSize * relativeScaleWidth, new SKPoint(cx, cy - radius - strokeWidth - 2 * relativeScaleWidth), SKTextAlign.Center);
-            canvas.DrawCaptionLabels(string.Empty, SKColor.Empty, $"{AbsoluteMaximum}°", SKColors.Black, LabelTextSize * relativeScaleWidth, new SKPoint(cx + radius + strokeWidth + CaptionMargin, cy), SKTextAlign.Center);
+            SKPaint paint = new SKPaint
+            {
+                Color = SKColors.Black,
+                TextSize = LabelTextSize * relativeScaleWidth,
+                TextAlign = SKTextAlign.Center
+            };
 
+            canvas.DrawText($"{AbsoluteMinimum}°", new SKPoint(cx - radius - strokeWidth - CaptionMargin, cy), paint);
+            canvas.DrawText($"{medium}°", new SKPoint(cx, cy - radius - strokeWidth - 2 * relativeScaleWidth), paint);
+            canvas.DrawText($"{AbsoluteMaximum}°", new SKPoint(cx + radius + strokeWidth + CaptionMargin, cy), paint);
 
             var degreeSign = '°';
 	        if (CurrentValueEntry != null)
-	        {
-		        canvas.DrawCaptionLabels(string.Empty, SKColor.Empty, $"Current: {CurrentValueEntry.Value}{degreeSign}",
-			        SKColor.Parse("#174A51"), LabelTextSize * relativeScaleWidth, new SKPoint(cx, cy - radius * 1.8f / 4f),
-			        SKTextAlign.Center);
-	        }
+            {
+                SKPaint paint2 = new SKPaint
+                {
+                    Color = SKColor.Parse("#174A51"),
+                    TextSize = LabelTextSize * relativeScaleWidth,
+                    TextAlign = SKTextAlign.Center
+                };
+
+                canvas.DrawText(
+                    $"Current: {CurrentValueEntry.Value}{degreeSign}",
+                    new SKPoint(cx, cy - radius * 1.8f / 4f), 
+                    paint2);
+            }
 
 	        if (DesiredValueEntry != null)
-	        {
-		        canvas.DrawCaptionLabels(string.Empty, SKColor.Empty, $"Desired: {DesiredValueEntry?.Value}{degreeSign}",
-			        SKColor.Parse("#378D93"), LabelTextSize * relativeScaleWidth, new SKPoint(cx, cy - radius * 0.9f / 4f),
-			        SKTextAlign.Center);
+            {
+                SKPaint paint3 = new SKPaint
+                {
+                    Color = SKColor.Parse("#378D93"),
+                    TextSize = LabelTextSize * relativeScaleWidth,
+                    TextAlign = SKTextAlign.Center
+                };
+
+                canvas.DrawText(
+                    $"Desired: {DesiredValueEntry?.Value}{degreeSign}",
+                    new SKPoint(cx, cy - radius * 0.9f / 4f),
+                    paint3);   
 	        }
         }
         

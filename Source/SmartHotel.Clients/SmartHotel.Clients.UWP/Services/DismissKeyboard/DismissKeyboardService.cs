@@ -7,6 +7,6 @@ namespace SmartHotel.Clients.UWP.Services.DismissKeyboard
 {
     class DismissKeyboardService : IDismissKeyboardService
     {
-        public void DismissKeyboard() => InputPane.GetForCurrentView().TryHide();
+        public void DismissKeyboard() => InputPaneInterop.GetForWindow().TryHide();
     }
 }

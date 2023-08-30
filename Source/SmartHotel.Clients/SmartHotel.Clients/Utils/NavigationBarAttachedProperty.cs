@@ -1,5 +1,6 @@
 ﻿using SmartHotel.Clients.Core.Views;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace SmartHotel.Clients.Core.Utils
 {
@@ -10,7 +11,7 @@ namespace SmartHotel.Clients.Core.Utils
                 "TextColor", 
                 typeof(Color), 
                 typeof(NavigationBarAttachedProperty), 
-                Color.Default);
+                null);
 
         public static Color GetTextColor(BindableObject view)
         {

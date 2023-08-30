@@ -1,6 +1,6 @@
 ﻿using SmartHotel.Clients.Core.Models;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
+using Microsoft.Maui.Devices.Sensors;
 
 namespace SmartHotel.Clients.Core.Services.Geolocator
 {
