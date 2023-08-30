@@ -250,9 +250,15 @@ I need to register some dependencies as I upgrade NuGet packages and replace oth
 
 ## Creating an Upgrade Sandbox
 
-It can be frustrating upgrading a large solution, moving lots of code around, and going for long periods of time without any confirmation that the work you are doing compiles and succeeds. In order to provide that confidence, I created a blank sandbox solution where I can implement changes in isolation (more or less) to confirm success before bring those changes back into the app solution.
+It can be frustrating upgrading a large solution, moving lots of code around, and going for long periods of time without any confirmation that the work you are doing compiles and succeeds. In order to provide that confidence, I created a blank sandbox solution where I can implement changes (effects, renderers to handlers, etc.) in isolation to confirm success before bring those changes back into the app solution.
 
-> **Update** After I did this myself, I discussed this need with Matthew Leiboqwitz from our SDK team, and he create a [blank solution](https://github.com/mattleibow/MauiMultiHeadProject) to use as a template. To install it, clone the repository and run: `dotnet new install src\Microsoft.Maui.Templates.MauiMultiHeadApp\content --force`. Then you can create a new solution with `dotnet new maui-multihead -n MySandbox`.
+> **Update** After I did this myself, I discussed this need with Matthew Leibowitz from our SDK team, and he created a [blank multi-project solution](https://github.com/mattleibow/MauiMultiHeadProject) to use as a .NET MAUI template that mirrors Xamarin.Forms. To install it, clone the repository and run: `dotnet new install src\Microsoft.Maui.Templates.MauiMultiHeadApp\content --force`. Then you can create a new solution with `dotnet new maui-multihead -n MySandbox`.
+
+{% embed https://github.com/mattleibow/MauiMultiHeadProject/ %}
+
+I've detailed a few things below for the curious, but if you (like me) really just want to skip ahead then use Matthew's template.
+
+## Creating from Scratch
 
 To mimic the Xamarin.Forms solution, I created a blank solution and added the following projects:
 
@@ -261,13 +267,15 @@ To mimic the Xamarin.Forms solution, I created a blank solution and added the fo
 * SmartHotelSandbox.Android - a .NET for Android project
 * SmartHotelSandbox.Windows - a WinUI project
 
+{% embed https://github.com/davidortinau/SmartHotelSandbox %}
+
 > **David's Confession:** as of this writing I've only done the class library and iOS project. I'll do Android and Windows later.
 
-### SmartHotelSandbox
+### New Project: SmartHotelSandbox
 
-This is what the csproj looks like now. See that it's outputing a `library` rather than an `exe`. I kept the platforms I care about right now (mobile...I'll need desktop later, but I'm working from a Mac). I also kept the `SingleProject` and related settings for fonts, images, and assets. Even though I'm using multiple projects, I can still benefit from these advancements, and multi-targeting from the `Platforms` folder.
+Here's the bare `csproj` file. See that it outputs a `library` rather than an `exe`. I kept the platforms I care about right now (mobile...I'll need desktop later, but I'm working from a Mac). I also kept the `SingleProject` and related settings for fonts, images, and assets. Even though I'm using multiple projects, I can still benefit from these advancements, and multi-targeting from the `Platforms` folder.
 
-As I worked through implementing things here, I incrementally added NuGets, hence all the package references you see. I didn't preload them before starting work. This snapshot of the csproj is from later in the upgrade journey.
+As I work through implementing things in this sandbox, I will incrementally add NuGets and resources as needed.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -294,36 +302,15 @@ As I worked through implementing things here, I incrementally added NuGets, henc
 	</ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Acr.UserDialogs" Version="8.1.0-alpha-0009" />
-    <PackageReference Include="Autofac" Version="4.9.2" />
-    
-    <PackageReference Include="Microcharts.Maui" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.55.0" />
-    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
-    <PackageReference Include="FFImageLoadingCompat" Version="0.1.1" />
-    <PackageReference Include="FFImageLoadingCompat.Maui" Version="0.1.1" />
-    
-    <PackageReference Include="AlohaKit.Animations" Version="1.0.0" />
-    
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.0-preview.7.8814" />
-    <PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
-
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0-preview.6.23329.7" />
-    
-    <PackageReference Include="Microsoft.AppCenter" Version="5.0.2" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.2" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.2" />
-    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="5.0.2" />
-    <PackageReference Include="Mopups" Version="1.1.1" />
   </ItemGroup>
   
 </Project>
 ```
 
-Since the app project will do the final `MauiProgram` initialization, I just need a host builder extension method where I can do some xplat things in the library. I originally went an implementation Sweeky shared with me, but have since adopted the pattern Matthew uses in the templates.
+Since the app project will do the final `MauiProgram` initialization, I just need a host builder extension method where I can do some xplat things in the library. I originally went an [implementation](https://github.com/Sweekriti91/mapbox-xamarin-forms/blob/maui_migrate/demo/MapBoxQs/MauiProgram.cs) Sweeky shared with me, but have since adopted the pattern Matthew uses in the templates.
 
 In the library, I have `MauiProgramExtensions.cs`:
 
@@ -347,15 +334,7 @@ public static class MauiProgramExtensions
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("FiraSans_Bold.ttf", "FiraSansBold");
-                fonts.AddFont("FiraSans_Regular.ttf", "FiraSansRegular");
-                fonts.AddFont("FiraSans_SemiBold.ttf", "FiraSansSemiBold");
-
-                fonts.AddFont("Poppins_Bold.ttf", "PoppinsBold");
-                fonts.AddFont("Poppins_Light.ttf", "PoppinsLight");
-                fonts.AddFont("Poppins_Medium.ttf", "PoppinsMedium");
-                fonts.AddFont("Poppins_Regular.ttf", "PoppinsRegular");
-                fonts.AddFont("Poppins_SemiBold.ttf", "PoppinsSemiBold");
+                
             });
 
 		return builder;
@@ -365,7 +344,7 @@ public static class MauiProgramExtensions
 
 Because I retained the single project stuff, I can copy the fonts into the Resources/Fonts folder and configure them in this location. 
 
-### SmartHotelSandbox.iOS
+### New Project: SmartHotelSandbox.iOS
 
 First I add a `MauiProgram.cs` which calls `UseSharedMauiApp` which we just created:
 
@@ -397,8 +376,6 @@ public static class MauiProgram
 The rest of the iOS files are like the standard iOS folder in a new project, so I won't go into detail there. 
 
 This is the solution where I'll port code piece by piece to confirm as I go that effects, renderers, and whatever else works before I bring those changes back into the upgraded solution for "final assembly" (of course there will be more work, so it's more like final v1).
-
-
 
 
 
