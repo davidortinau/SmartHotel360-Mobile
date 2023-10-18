@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+    <TargetFrameworks>net8.0-ios</TargetFrameworks>
     <UseMaui>True</UseMaui>
+    <!-- <MauiVersion>8.0.0-preview.6.23329.7</MauiVersion> -->
     <OutputType>Library</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
     <SingleProject>true</SingleProject>
@@ -10,6 +11,12 @@
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
   <ItemGroup>
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -37,8 +44,8 @@
     <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.0-preview.7.8814" />
     <PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
 
-    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-nightly.9423" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.0-nightly.9423" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0-preview.6.23329.7" />
     
     <PackageReference Include="Microsoft.AppCenter" Version="5.0.2" />
@@ -46,6 +53,9 @@
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.2" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="5.0.2" />
     <PackageReference Include="Mopups" Version="1.1.1" />
+    <PackageReference Include="DotNetMeteor.HotReload.Plugin" Version="3.*" />
+
+<!--    <PackageReference Include="The49.Maui.Insets" Version="1.0.0-alpha7" />-->
   </ItemGroup>
   
 </Project>

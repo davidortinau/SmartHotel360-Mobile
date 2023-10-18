@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SmartHotel.Clients.Core.Views.ExtendedSplashView"
-             BackgroundColor="Transparent">
+             x:Class="SmartHotel.Clients.Core.Views.ExtendedSplashView">
     <ContentPage.BackgroundColor>
         <OnPlatform x:TypeArguments="Color">
-            <On Platform="Android" Value="Transparent" />
+            <On Platform="Default" Value="Transparent" />
             <On Platform="UWP" Value="{StaticResource BackgroundColor}" />
         </OnPlatform>
     </ContentPage.BackgroundColor>
     <ContentPage.Content>
-        <Grid    
+        <Grid
             AutomationId="splash">
             <Image Aspect="AspectFill">
                 <Image.Source>

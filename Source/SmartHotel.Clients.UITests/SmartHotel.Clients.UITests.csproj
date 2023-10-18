@@ -3,6 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Configurations>Debug;Release;UI Test;UI-Test</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug</OutputPath>
@@ -27,14 +28,11 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NUnit">
-      <Version>2.6.4</Version>
+    <PackageReference Include="NUnit" Version="2.6.4">
     </PackageReference>
-    <PackageReference Include="NUnitTestAdapter">
-      <Version>2.1.1</Version>
+    <PackageReference Include="NUnitTestAdapter" Version="2.1.1">
     </PackageReference>
-    <PackageReference Include="Xamarin.UITest">
-      <Version>2.2.7.28-dev</Version>
+    <PackageReference Include="Xamarin.UITest" Version="2.2.7.28-dev">
     </PackageReference>
   </ItemGroup>
 </Project>

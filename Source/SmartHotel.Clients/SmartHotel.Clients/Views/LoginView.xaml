@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -7,6 +7,9 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Compat.Maui"   
     xmlns:xamanimation="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"  
     xmlns:extensions="clr-namespace:SmartHotel.Clients.Core.MarkupExtensions"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="False"
+    NavigationPage.HasNavigationBar="False"
     x:Class="SmartHotel.Clients.Core.Views.LoginView">
     <ContentPage.Resources>
 
@@ -77,13 +80,9 @@
         </EventTrigger>
     </ContentPage.Triggers>
     <ContentPage.Content>
-        <Grid>
-            <Grid 
+        <Grid IgnoreSafeArea="True">
+            <Grid RowDefinitions="6*,4*"
                 RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="6*" />
-                    <RowDefinition Height="4*" />
-                </Grid.RowDefinitions>
                 <!-- Top image -->
                 <Image
                     Grid.Row="0"
@@ -140,8 +139,8 @@
                         HorizontalOptions="{OnIdiom
                             Desktop='Center',
                             Tablet='Center',
-                            Phone='FillAndExpand'}"
-                        WidthRequest="{OnIdiom
+                            Phone='Fill'}"
+                        WidthRequest="{OnIdiom -1,
                             Desktop='350',
                             Tablet='320'}" />
                     <ctrls:ExtendedEntry
@@ -152,8 +151,8 @@
                         HorizontalOptions="{OnIdiom
                             Desktop='Center',
                             Tablet='Center',
-                            Phone='FillAndExpand'}"
-                        WidthRequest="{OnIdiom
+                            Phone='Fill'}"
+                        WidthRequest="{OnIdiom -1,
                             Desktop='350',
                             Tablet='320'}">
                         <VisualStateManager.VisualStateGroups>
@@ -184,8 +183,8 @@
                         HorizontalOptions="{OnIdiom
                             Desktop='Center',
                             Tablet='Center',
-                            Phone='FillAndExpand'}"
-                        WidthRequest="{OnIdiom
+                            Phone='Fill'}"
+                        WidthRequest="{OnIdiom -1,
                             Desktop='350',
                             Tablet='320'}" />
                     <ctrls:ExtendedEntry
@@ -197,8 +196,8 @@
                         HorizontalOptions="{OnIdiom
                             Desktop='Center',
                             Tablet='Center',
-                            Phone='FillAndExpand'}"
-                        WidthRequest="{OnIdiom
+                            Phone='Fill'}"
+                        WidthRequest="{OnIdiom -1,
                             Desktop='350',
                             Tablet='320'}">
                         <VisualStateManager.VisualStateGroups>
@@ -226,7 +225,7 @@
                         StyleId="signin-form-forgot-password-text"
                         Text="{extensions:Translate ForgotPassword}"
                         Style="{StaticResource ForgotPwdLabelStyle}"
-                        WidthRequest="{OnIdiom
+                        WidthRequest="{OnIdiom -1,
                             Desktop='350',
                             Tablet='320'}">
                         <Label.Effects>
@@ -238,7 +237,7 @@
                 <Grid 
                     Grid.Row="1"
                     BackgroundColor="{StaticResource WhiteColor}">
-                    <FlexLayout
+                    <FlexLayout 
                         StyleId="signup-container"
                         FlexLayout.AlignItems="{OnIdiom
                             Desktop='Start',
@@ -258,9 +257,9 @@
                     </FlexLayout>
                 </Grid>
                 <!-- Sign in buttons -->
-                <FlexLayout  
+                <FlexLayout
                     x:Name="SignButtons"
-                    Grid.Row="1"    
+                    Grid.Row="1"
                     StyleId="signin-buttons-container"
                     FlexLayout.AlignItems="{OnIdiom
                         Desktop='Center',
@@ -270,10 +269,11 @@
                         HorizontalOptions="{OnIdiom
                             Desktop='Center',
                             Tablet='Center',
-                            Phone='FillAndExpand'}"
-                        WidthRequest="{OnIdiom
+                            Phone='Fill'}"
+                        WidthRequest="{OnIdiom -1,
                             Desktop='350',
-                            Tablet='320'}">
+                            Tablet='320'}"
+                        >
                         <Button
                             Text="{extensions:Translate SignInMayus}"
                             AutomationId="signin"
@@ -295,8 +295,8 @@
                         HorizontalOptions="{OnIdiom
                             Desktop='Center',
                             Tablet='Center',
-                            Phone='FillAndExpand'}"
-                        WidthRequest="{OnIdiom
+                            Phone='Fill'}"
+                        WidthRequest="{OnIdiom -1,
                             Desktop='350',
                             Tablet='320'}">
                         <Button

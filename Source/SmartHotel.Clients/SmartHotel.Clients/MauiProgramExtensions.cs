@@ -6,6 +6,10 @@ using Microcharts.Maui;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using SmartHotel.Clients;
 using SmartHotel.Clients.Core.Helpers;
+using DotNet.Meteor.HotReload.Plugin;
+using SmartHotel.Clients.iOS;
+using SmartHotel.Clients.Platforms.iOS.Handlers;
+// using The49.Maui.Insets;
 
 namespace SmartHotel.Clients.Core;
 
@@ -19,6 +23,7 @@ public static class MauiProgramExtensions
 			.UseMauiCommunityToolkit()
 			.UseFFImageLoading()
 			.UseMicrocharts()
+			// .UseInsets()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("FiraSans_Bold.ttf", "FiraSansBold");
@@ -30,12 +35,20 @@ public static class MauiProgramExtensions
 				fonts.AddFont("Poppins_Medium.ttf", "PoppinsMedium");
 				fonts.AddFont("Poppins_Regular.ttf", "PoppinsRegular");
 				fonts.AddFont("Poppins_SemiBold.ttf", "PoppinsSemiBold");
+			})
+			.ConfigureMauiHandlers(handlers =>
+			{
+#if IOS
+				handlers.AddHandler(typeof(Shell), typeof(CustomShellRenderer));
+				handlers.AddHandler(typeof(NavigationPage), typeof(CustomNavBarRenderer));
+#endif
 			});
 
 		OverrideHandlers();
 
 #if DEBUG
 		// builder.Logging.AddDebug();
+		builder.EnableHotReload();
 #endif
 
 		return builder;

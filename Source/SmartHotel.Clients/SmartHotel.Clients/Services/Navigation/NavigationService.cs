@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Devices;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using System.Diagnostics;
 
 namespace SmartHotel.Clients.Core.Services.Navigation
 {
@@ -29,13 +30,19 @@ namespace SmartHotel.Clients.Core.Services.Navigation
 
         public async Task InitializeAsync()
         {
-            if (await authenticationService.UserIsAuthenticatedAndValidAsync())
+            try
             {
-                await NavigateToAsync<MainViewModel>();
-            }
-            else
+                if (await authenticationService.UserIsAuthenticatedAndValidAsync())
+                {
+                    await NavigateToAsync<MainViewModel>();
+                }
+                else
+                {
+                    await NavigateToAsync<LoginViewModel>();
+                }
+            }catch(Exception ex)
             {
-                await NavigateToAsync<LoginViewModel>();
+                Debug.WriteLine($"{ex.Message}");
             }
         }
 

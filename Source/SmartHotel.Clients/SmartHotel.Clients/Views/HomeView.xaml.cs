@@ -2,6 +2,7 @@
 using SmartHotel.Clients.Core.ViewModels.Base;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using System.Diagnostics;
 
 namespace SmartHotel.Clients.Core.Views
 {
@@ -22,6 +23,8 @@ namespace SmartHotel.Clients.Core.Views
             {
                 await viewAware.OnViewAppearingAsync(this);
             }
+
+            //Debug.WriteLine($"{this.On<iOS>().SafeAreaInsets()}");
         }
 
         protected override async void OnDisappearing()

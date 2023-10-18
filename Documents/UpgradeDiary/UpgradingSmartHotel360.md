@@ -1154,3 +1154,27 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    Menu layout
 
    the ListView that distributes the menu items is going off the screen. I tried replacing with a VStack and bindable layout, but it's the same problem. The LV at least scrolls. Why are the items so tall?
+
+   ### OnIdiom Default
+
+   There are several layouts in this app that use OnIdiom to specify fixed width for desktop and tablet, but ignore phone in order to allow the HorizontalOptions of Fill to take over. The problem is that .NET MAUI defaults to 0 instead of -1, so when sizing the view the Fill option does nothing.
+
+   The solution is to provide a default value of -1.
+
+```
+<Button 
+    HorizontalOptions="{OnIdiom
+            Desktop='Center',
+            Tablet='Center',
+            Phone='Fill'}"
+    WidthRequest="{OnIdiom -1,
+        Desktop='350',
+        Tablet='320'}" />
+```
+
+```
+<Grid.ColumnDefinitions>
+    <ColumnDefinition />
+    <ColumnDefinition />
+</Grid.ColumnDefinitions>
+```

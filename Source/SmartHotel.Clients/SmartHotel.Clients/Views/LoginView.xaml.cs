@@ -9,7 +9,7 @@ namespace SmartHotel.Clients.Core.Views
     {
         public LoginView()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
 
             InitializeComponent();
 
@@ -21,6 +21,11 @@ namespace SmartHotel.Clients.Core.Views
             base.OnAppearing();
 
             StatusBarHelper.Instance.MakeTranslucentStatusBar(true);
+        }
+
+        protected override void OnNavigatedTo(NavigatedToEventArgs args)
+        {
+            base.OnNavigatedTo(args);
         }
 
         void OnSignInRequested(LoginViewModel loginViewModel)

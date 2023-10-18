@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -137,23 +137,17 @@
         </EventTrigger>
     </ContentPage.Triggers>
     <ContentPage.Content>
-        <Grid   
+        <Grid
+            Margin="0,-180,0,0"
             AutomationId="booking"
-            RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            RowSpacing="0"
+            RowDefinitions="Auto,*">
             <controls:iOSStatusBarBackground 
                 Grid.Row="0" />
             <Grid
                 Grid.Row="1"
-                RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2.4*" />
-                    <RowDefinition Height="7.6*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                RowSpacing="0"
+                RowDefinitions="2.4*,7.6*,Auto">
                 <!-- Top image -->
                 <Image 
                     Grid.Row="0"
@@ -172,12 +166,8 @@
                 <!-- Search results -->
                 <Grid
                     BackgroundColor="{StaticResource WhiteColor}"
-                    Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+                    Grid.Row="1"
+                    RowDefinitions="Auto,*,Auto">
                     <Label
                         Grid.Row="0" 
                         Text="{extensions:Translate Suggestions}"
@@ -197,28 +187,19 @@
                                         <Grid 
                                             x:Name="SuggestionCell"
                                             ColumnSpacing="0"
-                                            BackgroundColor="{StaticResource WhiteColor}">
-                                            <Grid.HeightRequest>
-                                                <OnPlatform x:TypeArguments="x:Double">
-                                                    <On Platform="Android, iOS" Value="60" />
-                                                    <On Platform="UWP" Value="64" />
-                                                </OnPlatform>
-                                            </Grid.HeightRequest>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="12" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="12" />
-                                            </Grid.ColumnDefinitions>
+                                            BackgroundColor="{StaticResource WhiteColor}"
+                                            ColumnDefinitions="12,Auto,*,Auto,12"
+                                            HeightRequest="{OnPlatform 60, WinUI=64}">
                                             <Image
                                                 Grid.Column="1" 
                                                 x:Name="SuggestionCorner" 
-                                                Aspect="AspectFit"
+                                                HorizontalOptions="Start"
+                                                HeightRequest="{OnPlatform 60, WinUI=64}"
+                                                WidthRequest="{OnPlatform 60, WinUI=64}"
                                                 IsVisible="{Binding Source={x:Reference Suggestions}, Path=SelectedItem, 
                                                 Converter={StaticResource SelectedToBoolConverter},
                                                 ConverterParameter={x:Reference SuggestionCell}}"
-                                                Margin="0, 2">
+                                                Margin="{OnPlatform '0', Android='0,6'}">
                                                 <Image.Source>
                                                     <OnPlatform x:TypeArguments="ImageSource">
                                                         <On Platform="Android, iOS" Value="ball_left" />
@@ -226,27 +207,23 @@
                                                     </OnPlatform>
                                                 </Image.Source>
                                             </Image>
-                                            <Grid
+                                            <BoxView
                                                 Grid.Column="2" 
-                                                HeightRequest="{Binding Source={x:Reference SuggestionCorner}, Path=HeightRequest}"
                                                 BackgroundColor="{StaticResource SelectedBackgroundColor}"
                                                 IsVisible="{Binding Source={x:Reference Suggestions}, Path=SelectedItem, 
                                                 Converter={StaticResource SelectedToBoolConverter},
-                                                ConverterParameter={x:Reference SuggestionCell}}">
-                                                <Grid.Margin>
-                                                    <OnPlatform x:TypeArguments="Thickness">
-                                                        <On Platform="Android" Value="0, 6" />
-                                                        <On Platform="iOS, UWP" Value="0, 2" />
-                                                    </OnPlatform>
-                                                </Grid.Margin>
-                                            </Grid>
+                                                ConverterParameter={x:Reference SuggestionCell}}"
+                                                Margin="{OnPlatform '0', Android='0,6'}"/>
                                             <Image
                                                 Grid.Column="3" 
                                                 Aspect="AspectFit"
+                                                HorizontalOptions="End"
+                                                HeightRequest="{OnPlatform 60, WinUI=64}"
+                                                WidthRequest="{OnPlatform 60, WinUI=64}"
                                                 IsVisible="{Binding Source={x:Reference Suggestions}, Path=SelectedItem, 
                                                 Converter={StaticResource SelectedToBoolConverter},
                                                 ConverterParameter={x:Reference SuggestionCell}}"
-                                                Margin="0, 2">
+                                                Margin="{OnPlatform '0', Android='0,6'}">
                                                 <Image.Source>
                                                     <OnPlatform x:TypeArguments="ImageSource">
                                                         <On Platform="Android, iOS" Value="ball_right" />

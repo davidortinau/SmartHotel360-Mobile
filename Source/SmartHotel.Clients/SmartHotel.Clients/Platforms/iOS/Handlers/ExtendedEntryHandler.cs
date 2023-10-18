@@ -9,6 +9,9 @@ public partial class ExtendedEntryHandler : EntryHandler
 {
     private static async void MapLineColor(ExtendedEntryHandler handler, ExtendedEntry view)
     {
+        if (view.LineColor == null)
+            return;
+
         handler.PlatformView.BorderStyle = UITextBorderStyle.None;
         var lineLayer = handler.PlatformView.Layer.Sublayers?.OfType<LineLayer>().FirstOrDefault();
             
